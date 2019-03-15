@@ -6,6 +6,11 @@ div {
   border: solid 0.3px black;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 #Navbar {
   max-height: 7vh;
   display: flex;
@@ -84,4 +89,35 @@ div {
   font-family: 'Questrial';
   text-align: left;
   padding: 10px;
+}
+
+#attraction-show {
+  font-family: 'Questrial';
+  margin: 1.5% 10%;
+  display: flex;
+  justify-content: center;
+}
+
+#attraction-show .attr-row1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10%;
+  align-items: center;
+}
+
+#attraction-show .attraction-img img {
+  width: 100%;
+}
+
+.attr-content .heading {
+  font-family: 'Archivo Black';
+  font-size: 20px;
+  margin: 0px 0px 20px;
+}
+
+.attr-row2 {
+  font-family: 'Questrial';
+  display: flex;
+  justify-content: center;
+  margin: 1.5% 10%;
 }

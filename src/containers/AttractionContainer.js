@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import AttractionShow from '../components/AttractionShow'
+import AttractionCard from '../components/AttractionCard'
 
 export default class AttractionContainer extends Component {
    
    renderAttractions = () => {
-      return this.props.attractions.map( attraction => < AttractionShow attraction={attraction} key={attraction.id} handleAttractionSelected={this.props.handleAttractionSelected} /> ) 
+      return this.props.attractions.map(attraction => < AttractionCard attraction={attraction} key={attraction.id} handleAttractionSelection={this.props.handleAttractionSelection} /> ) 
    }
 
    render() {

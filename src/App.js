@@ -9,12 +9,14 @@ import {
 
 import NavBar from './containers/NavBar'
 import AttractionContainer from './containers/AttractionContainer'
+import AttractionShow from './containers/AttractionShow'
 import Banner from './components/Banner'
 
 class App extends Component {
 
   state = {
     attractions: [],
+    attractionSelectedId: null,
   }
 
   componentDidMount() {
@@ -26,26 +28,44 @@ class App extends Component {
         })
       })
   }
+  
+  handleAttractionSelection = (id) => {
+    this.setState({
+      attractionSelectedId: id
+    })
+  }
 
   renderHomePage = () => (
-    <div>
+    <div className="App">
+      <NavBar />
       <Banner />
       <div id='attractions'>
-        < AttractionContainer attractions={this.state.attractions} handleAttractionSelected={this.handleAttractionSelected} />
+        <AttractionContainer attractions={this.state.attractions} handleAttractionSelection={this.handleAttractionSelection} />
       </div>
     </div>
   )
 
+  renderAttractionSelected = (props) => {
+    return (
+      <div className="App">
+        <NavBar />
+        <AttractionShow 
+          attraction={this.state.attractions.filter(attraction => attraction.id === this.state.attractionSelectedId)[0]}
+          {...props} 
+        />
+      </div>
+    )
+  }
+
+
   render() {
     return (
       <Switch>
-        <div className="App">
-          < NavBar />
-          {this.renderHomePage()}
-        </div>
+        <Route exact path='/' component={this.renderHomePage} />
+        <Route path='/attractions/:id' component={routerProps => this.renderAttractionSelected(routerProps)} />
       </Switch>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
