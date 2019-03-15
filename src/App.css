@@ -2,32 +2,86 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+div {
+  border: solid 0.3px black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#Navbar {
+  max-height: 7vh;
   display: flex;
-  flex-direction: column;
+}
+
+#Navbar>div {
+  margin: 15px;
+}
+
+#Navbar .nav-links {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#Navbar .nav-link {
+  margin: 0 20px;
+  border-left: solid 0.2px lightgray;
+  padding: 0px 10px;
+}
+
+#banner .banner-img {
+  background-image: url('./images/home-page1.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 20vh;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+#banner .banner-text {
+  font-family: 'Archivo Black';
+  font-weight: bolder;
+  font-size: xx-large;
   color: white;
+  border: solid 5px white; 
+  max-width: 300px;
+  max-height: 200px;
+  padding: 20px 40px;
 }
 
-.App-link {
-  color: #61dafb;
+#attraction-cont {
+  margin: 2% 10%;
+  width: -webkit-fill-available;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr );
+  grid-template-rows: auto;
+  grid-column-gap: 10%;
+  grid-row-gap: 30px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.attraction-card .img {
+  background-image: url('./images/harry-potter.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 20vh;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.attraction-card .img .attr-name {
+  font-family: 'Archivo Black';
+  font-size: 20px;
+  color: white;
+  margin: 4px 8px;
+}
+
+.attraction-card .content {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+  font-family: 'Questrial';
+  text-align: left;
+  padding: 10px;
 }

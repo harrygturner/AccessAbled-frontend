@@ -1,26 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  withRouter,
+  Switch,
+  Route
+} from 'react-router-dom';
+
+
+import NavBar from './containers/NavBar'
+import AttractionContainer from './containers/AttractionContainer'
+import Banner from './components/Banner'
 
 class App extends Component {
+
+  state = {
+    attractions: [],
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/attractions')
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({
+          attractions: data
+        })
+      })
+  }
+
+  renderHomePage = () => (
+    <div>
+      <Banner />
+      <div id='attractions'>
+        < AttractionContainer attractions={this.state.attractions} handleAttractionSelected={this.handleAttractionSelected} />
+      </div>
+    </div>
+  )
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Switch>
+        <div className="App">
+          < NavBar />
+          {this.renderHomePage()}
+        </div>
+      </Switch>
     );
   }
 }
