@@ -5,24 +5,6 @@ import { Redirect } from 'react-router'
 
 export default class AttractionShow extends Component {
 
-   // state = {
-   //    attraction: this.props.attraction
-   // }
-
-   // componentDidMount() {
-   //    const attractionId = parseInt(this.props.match.url.split('/')[this.props.match.url.split('/').length - 1])
-   //    if(!this.props.attraction) {
-   //       fetch(`http://localhost:3000/attractions/${attractionId}`)
-   //          .then( resp => resp.json() )
-   //          .then( data => {
-   //             debugger
-   //             this.setState({
-   //                attraction: data
-   //             })
-   //          })
-   //    } 
-   // }
-
    render(){ 
       if(!this.props.attraction){
          return(

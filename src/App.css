@@ -117,7 +117,15 @@ a {
 
 .attr-row2 {
   font-family: 'Questrial';
-  display: flex;
   justify-content: center;
   margin: 1.5% 10%;
 }
+
+.attr-row2 .dis-cat {
+  font-family: 'Archivo Black';
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  cursor: pointer;
+}
+
+
