@@ -16,7 +16,7 @@ export default class AttractionShow extends Component {
             <div>
                <div id='attraction-show'>
                   <div className='attr-row1'>
-                     <ImageMap />
+                     <ImageMap attraction={attraction} />
                      <div className='attr-content'>
                         <div className='heading'>
                            {attraction.name}

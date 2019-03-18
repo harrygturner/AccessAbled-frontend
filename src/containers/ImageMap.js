@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import image from '../images/harry-potter.jpg'
+import images from '../images/CardImages'
 
 export default class ImageMap extends Component {
    render() {
+      const attraction = this.props.attraction
       return(
          <div className='attraction-img'>
-            <img src={image} alt='The Attraction' />
+            <img src={images[attraction.id-1]} alt='The Attraction' />
          </div>
       )
    }
