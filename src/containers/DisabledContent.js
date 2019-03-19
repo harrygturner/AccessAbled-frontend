@@ -33,7 +33,7 @@ export default class DisabledContent extends Component {
 
    render() {
       return (
-         <div className='attr-row2'>
+         <div className='disabled-container'>
             <div className='dis-cat'>
                <div className='cat1' onClick={this.handleClick}>ACCESSIBILITY</div>
                <div className='cat2' onClick={this.handleClick}>FACILITIES</div>

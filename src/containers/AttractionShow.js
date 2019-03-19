@@ -1,35 +1,50 @@
 import React, { Component } from 'react';
-import ImageMap from './ImageMap';
+import AttractionImage from '../components/AttractionImage';
 import DisabledContent from './DisabledContent';
-import { Redirect } from 'react-router'
+import AttractionMap from './AttractionMap';
 
 export default class AttractionShow extends Component {
 
+   state = {
+      stations: []
+   }
+
+   componentDidMount() {
+      const attraction_id = this.props.attraction.id;
+      fetch(`http://localhost:3000/attraction_stations/${attraction_id}`)
+         .then(resp => resp.json())
+         .then(stations => {
+            this.setState({
+               stations
+            })
+         })
+   }
+
    render(){ 
-      if(!this.props.attraction){
-         return(
-            <Redirect to="/" />
-         )
-      } else {
-         const attraction = this.props.attraction
-         return(
-            <div>
-               <div id='attraction-show'>
-                  <div className='attr-row1'>
-                     <ImageMap attraction={attraction} />
-                     <div className='attr-content'>
-                        <div className='heading'>
-                           {attraction.name}
-                        </div>
-                        <div className='description'>
-                           {attraction.about_attraction}
-                        </div>
+      const attraction = this.props.attraction
+      return(
+         <div id='show-page'>
+            <div id='attraction-show'>
+               <div className='attr-row1'>
+                  <AttractionImage attraction={attraction} />
+                  <div className='attr-content'>
+                     <div className='heading'>
+                        {attraction.name}
+                     </div>
+                     <div className='description'>
+                        {attraction.about_attraction}
+                     </div>
+                     <div className='address'>
+                        Address: {attraction.address}
                      </div>
                   </div>
                </div>
-               <DisabledContent attraction={attraction} />
             </div>
-         )
-      }
+            <div className='attr-row2'>
+               <DisabledContent attraction={attraction} />
+               <AttractionMap stations={this.state.stations} attraction={this.props.attraction} />
+            </div>
+         </div>
+      )
    }
 } 
