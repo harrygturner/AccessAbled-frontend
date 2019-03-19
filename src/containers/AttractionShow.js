@@ -22,6 +22,7 @@ export default class AttractionShow extends Component {
 
    render(){ 
       const attraction = this.props.attraction
+      
       return(
          <div id='show-page'>
             <div id='attraction-show'>

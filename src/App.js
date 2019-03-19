@@ -16,7 +16,7 @@ class App extends Component {
 
   state = {
     attractions: [],
-    attractionSelectedId: null,
+    attractionSelectedId: null
   }
 
   componentDidMount() {
@@ -46,15 +46,20 @@ class App extends Component {
   )
 
   renderAttractionSelected = (props) => {
-    return (
-      <div className="App">
-        <NavBar />
-        <AttractionShow 
-          attraction={this.state.attractions.filter(attraction => attraction.id === this.state.attractionSelectedId)[0]}
-          {...props} 
-        />
-      </div>
-    )
+    if (this.state.attractionSelectedId) {
+      return (
+        <div className="App">
+          <NavBar />
+          <AttractionShow 
+            attraction={this.state.attractions.find(attraction => attraction.id === this.state.attractionSelectedId)}
+            {...props} 
+          />
+        </div>
+      )
+    } else {
+      this.props.history.push('/')
+      return <div></div>
+    }
   }
 
 
