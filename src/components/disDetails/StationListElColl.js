@@ -12,6 +12,7 @@ class StationListElColl extends Component {
 
    renderCollapsableComponent = () => {
       const { isOpened } = this.state;
+      
       return(
          <Collapse isOpened={isOpened}>
             <StationInformation
@@ -20,25 +21,36 @@ class StationListElColl extends Component {
          </Collapse>
       )
    }
+
+   handleClick = () => {
+      const stationId = this.props.station.accessible_station_id
+      this.setState({ 
+         isOpened: !this.state.isOpened, 
+         stationElSelectedId: stationId 
+      })
+      this.props.handleStationElClick(stationId)
+   }
+
+   handleHover = (event) => this.props.handleStationElHover(event)
    
    render() {
       const station = this.props.station
-      const stationId = station.accessible_station_id
-      console.log(this.props)
 
       return (
          <div id='station-info'>
             <div className='station-el' 
-               onClick={ () => this.setState({ isOpened: !this.state.isOpened, stationElSelectedId: stationId }) } 
-            >
-               <div className='station-name' 
-                  onClick={() => this.setState({ isOpened: !this.state.isOpened, stationElSelectedId: stationId })}
-               >
+               onClick={ this.handleClick } 
+               onMouseOver={ this.handleHover }
+         >
+               <div className='station-name' data-id={station.accessible_station_id}
+                  onClick={ this.handleClick }
+                  onMouseOver={ this.handleHover }
+         >
                   {station.name}
                </div> 
-               <div className='station-dist' 
-                  data-id={stationId} 
-                  onClick={() => this.setState({ isOpened: !this.state.isOpened, stationElSelectedId: stationId })}
+               <div className='station-dist' data-id={station.accessible_station_id}
+                  onClick={ this.handleClick }
+                  onMouseOver={ this.handleHover }
                >
                   Distance: {station.distance} metres
                </div>

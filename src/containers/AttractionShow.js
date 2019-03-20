@@ -11,7 +11,9 @@ export default class AttractionShow extends Component {
 
    state = {
       stations: [],
-      categorySelected: null
+      categorySelected: null,
+      stationElSelectedId: null,
+      stationElHoverId: null
    }
 
    componentDidMount() {
@@ -23,6 +25,19 @@ export default class AttractionShow extends Component {
                stations
             })
          })
+   }
+
+   handleStationElClick = (id) => {
+      this.setState({
+         stationElSelectedId: id
+      })
+   }
+
+   handleStationElHover = event => {
+      const stationId = event.target.dataset.id
+      this.setState({
+         stationElHoverId: stationId
+      })
    }
 
    handleCategorySelected = e => {
@@ -37,10 +52,6 @@ export default class AttractionShow extends Component {
       })
    }
 
-   handleStationMarkerClick = () => {
-      console.log('Hi')
-   }
-
    renderDisabledContent = () => {
       const attraction = this.props.attraction
       switch (this.state.categorySelected) {
@@ -51,7 +62,12 @@ export default class AttractionShow extends Component {
          case 'accomodation':
             return <Accomodation attraction={attraction} />;
          case 'tube stations':
-            return <TubeStations stations={this.state.stations} accessibleStations={this.props.accessibleStations} />;
+            return <TubeStations 
+                     stations={this.state.stations} 
+                     accessibleStations={this.props.accessibleStations} 
+                     handleStationElClick={this.handleStationElClick}
+                     handleStationElHover={this.handleStationElHover}
+                  />;
          default:
             return <Accessibility attraction={attraction} />;
       }

@@ -215,6 +215,7 @@ a {
   justify-content: center;
   align-content: center;  
   height: 5vh;
+  cursor: pointer;
 }
 
 .station-list .station-el .station-name {
@@ -232,3 +233,25 @@ a {
   justify-content: left;
   width: 100%;
 }
+
+#stop-information {
+  margin-top: 15px;
+  text-align: left;
+}
+
+#station-information {
+  padding: 10px;
+}
+
+#station-information .accessibility {
+  margin-bottom: 15px;
+}
+
+#station-information .facilities {
+  margin-bottom: 15px;
+}
+
+#station-information .transport {
+  margin-bottom: 15px;
+}
+
