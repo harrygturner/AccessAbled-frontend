@@ -16,13 +16,16 @@ export default class AttractionMap extends Component {
       zoom: 14
    };
 
+   // station id's being passed down in props link to the station.accessible_station_id
    renderTrainMarkers = () => this.props.stations.map(station => {
       return(
          < TrainMarker
             key={station.id} 
             lat={station.lat}
             lng={station.long}
-            handleStationMarkerClick={this.props.handleStationMarkerClick}
+            id={station.accessible_station_id}
+            stationSelectedId={this.props.stationSelecetedId}
+            stationHoverId={parseInt(this.props.stationHoverId)}
          />
       )
    })

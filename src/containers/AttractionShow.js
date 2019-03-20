@@ -104,6 +104,8 @@ export default class AttractionShow extends Component {
                   stations={this.state.stations} 
                   attraction={this.props.attraction} 
                   handleStationMarkerClick={this.handleStationMarkerClick} 
+                  stationSelecetedId={this.state.stationElSelectedId}
+                  stationHoverId={this.state.stationElHoverId}
                />
             </div>
          </div>
