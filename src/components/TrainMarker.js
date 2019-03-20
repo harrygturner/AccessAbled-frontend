@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TrainMarker = () => {
+const TrainMarker = (props) => {
    return (
-      <div className='marker'>
+      <div className='marker' onClick={props.handleStationMarkerClick}>
          <i className="fas fa-map-pin" style={{
             color: 'darkred',
             fontSize: '28px',

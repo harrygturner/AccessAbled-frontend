@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import AttractionImage from '../components/AttractionImage';
-import DisabledContent from './DisabledContent';
+import DisabledContent from '../components/DisabledContent';
 import AttractionMap from './AttractionMap';
+import Accessibility from '../components/disDetails/Accessibility'
+import Accomodation from '../components/disDetails/Accomodation'
+import Facilities from '../components/disDetails/Facilities'
+import TubeStations from './TubeStations'
 
 export default class AttractionShow extends Component {
 
    state = {
-      stations: []
+      stations: [],
+      categorySelected: null
    }
 
    componentDidMount() {
@@ -18,6 +23,38 @@ export default class AttractionShow extends Component {
                stations
             })
          })
+   }
+
+   handleCategorySelected = e => {
+      const arr = Array.prototype.slice.call(e.target.parentElement.children)
+      arr.forEach(el => {
+         el.style.background = ''
+      })
+      e.target.style.background = 'red'
+      const category = e.target.innerText.toLowerCase();
+      this.setState({
+         categorySelected: category
+      })
+   }
+
+   handleStationMarkerClick = () => {
+      console.log('Hi')
+   }
+
+   renderDisabledContent = () => {
+      const attraction = this.props.attraction
+      switch (this.state.categorySelected) {
+         case 'accessibility':
+            return <Accessibility attraction={attraction} />;
+         case 'facilities':
+            return <Facilities attraction={attraction} />;
+         case 'accomodation':
+            return <Accomodation attraction={attraction} />;
+         case 'tube stations':
+            return <TubeStations stations={this.state.stations} accessibleStations={this.props.accessibleStations} />;
+         default:
+            return <Accessibility attraction={attraction} />;
+      }
    }
 
    render(){ 
@@ -42,8 +79,16 @@ export default class AttractionShow extends Component {
                </div>
             </div>
             <div className='attr-row2'>
-               <DisabledContent attraction={attraction} />
-               <AttractionMap stations={this.state.stations} attraction={this.props.attraction} />
+               <DisabledContent 
+                  attraction={attraction} 
+                  handleCategorySelected={this.handleCategorySelected} 
+                  renderDisabledContent={this.renderDisabledContent} 
+               />
+               <AttractionMap 
+                  stations={this.state.stations} 
+                  attraction={this.props.attraction} 
+                  handleStationMarkerClick={this.handleStationMarkerClick} 
+               />
             </div>
          </div>
       )

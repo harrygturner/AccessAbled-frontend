@@ -6,7 +6,6 @@ import {
   Route
 } from 'react-router-dom';
 
-
 import NavBar from './containers/NavBar'
 import AttractionContainer from './containers/AttractionContainer'
 import AttractionShow from './containers/AttractionShow'
@@ -16,7 +15,8 @@ class App extends Component {
 
   state = {
     attractions: [],
-    attractionSelectedId: null
+    attractionSelectedId: null,
+    accessibleStations: []
   }
 
   componentDidMount() {
@@ -27,6 +27,14 @@ class App extends Component {
           attractions: data
         })
       })
+      .then(fetch('http://localhost:3000/accessible_stations')
+        .then(resp => resp.json())
+        .then(accessibleStations => {
+          this.setState({
+            accessibleStations
+          })
+        })
+      )
   }
   
   handleAttractionSelection = (id) => {
@@ -52,6 +60,7 @@ class App extends Component {
           <NavBar />
           <AttractionShow 
             attraction={this.state.attractions.find(attraction => attraction.id === this.state.attractionSelectedId)}
+            accessibleStations={this.state.accessibleStations}
             {...props} 
           />
         </div>

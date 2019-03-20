@@ -13,7 +13,7 @@ export default class AttractionMap extends Component {
          lat: this.props.attraction.lat,
          lng: this.props.attraction.long
       },
-      zoom: 15
+      zoom: 14
    };
 
    renderTrainMarkers = () => this.props.stations.map(station => {
@@ -22,13 +22,12 @@ export default class AttractionMap extends Component {
             key={station.id} 
             lat={station.lat}
             lng={station.long}
+            handleStationMarkerClick={this.props.handleStationMarkerClick}
          />
       )
    })
    
    render() {
-      // const station = this.props.station[0]
-      console.log(this.props)
       return (
          <div id='attraction-map' style={{ height: '100%', width: '100%' }}>
             <GoogleMapReact
