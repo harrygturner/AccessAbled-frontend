@@ -5,7 +5,7 @@ const TrainMarker = (props) => {
    //    return (
    //       <div className='marker'>
    //          <i className="fas fa-map-pin" style={{
-   //             color: 'black',
+   //             color: 'darkred',
    //             fontSize: '28px',
    //             margin: '-40px -20px'
    //          }}></i>
@@ -19,7 +19,8 @@ const TrainMarker = (props) => {
                color: 'green',
                fontSize: '28px',
                margin: '-40px -20px'
-            }}></i>
+            }}>
+            </i>
          </div>
       )
    } else {
@@ -29,7 +30,8 @@ const TrainMarker = (props) => {
                color: 'darkred',
                fontSize: '28px',
                margin: '-40px -20px' 
-            }}></i>
+            }}>
+            </i>
          </div>
       )
    }

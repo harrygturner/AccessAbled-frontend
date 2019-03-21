@@ -11,12 +11,11 @@ class StationListElColl extends Component {
    }
 
    renderCollapsableComponent = () => {
-      const { isOpened } = this.state;
-      
       return(
-         <Collapse isOpened={isOpened}>
+         <Collapse isOpened={this.props.isOpen}>
             <StationInformation
                stationDetails={this.props.accessibleStations.find(station => station.id === this.state.stationElSelectedId)}
+               handleHover={this.handleHover}
             />
          </Collapse>
       )
@@ -25,7 +24,7 @@ class StationListElColl extends Component {
    handleClick = () => {
       const stationId = this.props.station.accessible_station_id
       this.setState({ 
-         isOpened: !this.state.isOpened, 
+         isOpened: this.props.isOpen, 
          stationElSelectedId: stationId 
       })
       this.props.handleStationElClick(stationId)

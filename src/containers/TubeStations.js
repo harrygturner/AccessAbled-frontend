@@ -3,15 +3,28 @@ import StationListElColl from '../components/disDetails/StationListElColl'
 
 export default class TubeStations extends Component {
 
-   renderStationElColl = () => this.props.stations.map(station => (
-      <StationListElColl 
-         key={station.id} 
-         station={station} 
-         handleStationElClick={this.props.handleStationElClick} 
-         accessibleStations={this.props.accessibleStations}
-         handleStationElHover={this.props.handleStationElHover}
-      />
-   ))
+   state = {
+      stationElClickedId: null
+   }
+
+   handleStationElClick = (stationId) => {
+      this.setState({stationElClickedId: stationId})
+   }
+
+   renderStationElColl = () => this.props.stations.map(station => {
+      return(
+         <StationListElColl 
+            key={station.id} 
+            station={station} 
+            handleStationElClick={this.handleStationElClick} 
+            accessibleStations={this.props.accessibleStations}
+            handleStationElHover={this.props.handleStationElHover}
+            isOpen={ this.state.stationElClickedId === station.accessible_station_id ? true : false }
+         />
+      )}
+   )
+      
+
 
    render() {
       return (

@@ -9,7 +9,7 @@ const DisabledContent = (props) => {
             <div className='dis-cat 3' onClick={props.handleCategorySelected}>ACCOMODATION</div>
             <div className='dis-cat 4' onClick={props.handleCategorySelected}>TUBE STATIONS</div>
          </div>
-         <div className='dis-info'>
+         <div className='dis-info' onMouseLeave={props.handleMouseLeaveDisabledContent}>
             {props.renderDisabledContent()}
          </div>
       </div>

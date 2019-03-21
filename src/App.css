@@ -151,7 +151,6 @@ a {
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 60% auto;
-  overflow-y: scroll;
 }
 
 #show-page {
@@ -200,6 +199,8 @@ a {
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 6; 
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 #attraction-map .gmnoprint {
@@ -255,3 +256,120 @@ a {
   margin-bottom: 15px;
 }
 
+.seperator {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+  grid-template-rows: 100%;
+  margin: 40px 0px 20px 0px;
+}
+
+.seperator .line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.seperator .line hr {
+  border:  2px solid black;
+  width: 100%;
+}
+
+.seperator .textbox {
+  width: 100%;
+}
+
+.seperator .textbox .text {
+  font-family: 'Archivo Black';
+  background-color: white;
+  margin: 0px auto;
+  padding: 0px 10px;
+  text-align: center;
+  display: inline;
+  font-size: 20px;
+}
+
+#review {
+  margin: 50px 0px 30px;
+  display: grid;
+  width: 60%;
+}
+
+#review .review-list {
+  margin-top: 2%;
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  grid-row-gap: 2vh;
+}
+
+#review .review-list .card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: repeat(2, auto);
+}
+
+#review .card .left {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+#review .card .right {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  justify-content: left;
+  padding: 0px 15px;
+}
+
+#review .card .top {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#review .card .bottom {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+
+#review .card div {
+  padding: 10px 5px;
+  display: flex;
+  align-items: center;
+}
+
+#review .rating i {
+  color: steelblue;
+  margin: 0px 2px;
+  -webkit-text-stroke-width: 0.7px;
+}
+
+#review .card .title {
+  font-family: 'Archivo Black';
+  font-size: 20px;
+}
+
+#review .review-header {
+  display: flex;
+  width: 100%;
+  border-bottom: solid 2px slategrey
+}
+
+.attr-row3 {
+  display: flex;
+  justify-content: center;
+}
+
+#review .review-header div {
+  font-family: 'Archivo Black';
+  padding: 0px 50px 10px 50px;
+}
+
+#review .review-header div:hover {
+  border-bottom: solid 3px orange;
+  z-index: 2;
+  cursor: pointer;
+}

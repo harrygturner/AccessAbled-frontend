@@ -6,12 +6,11 @@ const StationInformation = (props) => {
 
    const renderPartiallyAccessible = () => {
       return (
-         <div className='partial'>
+         <div className='partial' onMouseOver={props.handleHover} data-id={s.id}>
             This station is PARTIALLY accessible via:
             {renderStopInformation()}
          </div>
       )
-
    }
 
    const renderPublicTransport = () => {
@@ -37,7 +36,7 @@ const StationInformation = (props) => {
    const renderAdditionalAccessInfo = () => {
       if (s.additional_access_info){
          return(
-            <div className='additional'>
+            <div className='additional' onMouseOver={props.handleHover} data-id={s.id}>
                {s.additional_access_info.replace(/(<([^>]+)>)/ig, "")}
             </div>
          )
@@ -45,24 +44,24 @@ const StationInformation = (props) => {
    }
 
    const renderFullyAccessible = () => (
-      <div className='fully'>
+      <div className='fully' onMouseOver={props.handleHover} data-id={s.id}>
          This station is FULLY accessible via all lines
       </div>
    )
 
-   const renderStopInformation = () => s.stops.map(stop => <StopInformation stop={stop} key={stop.id} /> )
+   const renderStopInformation = () => s.stops.map(stop => <StopInformation stop={stop} key={stop.id} handleHover={props.handleHover} station={s} /> )
 
    return(
-      <div id='station-information'>
-         <div className='accessibility'>
+      <div id='station-information' onMouseOver={props.handleHover} data-id={s.id}>
+         <div className='accessibility' onMouseOver={props.handleHover} data-id={s.id}>
             { s.accessibility_type === 'Partial' ? renderPartiallyAccessible() : renderFullyAccessible() }
          </div>
-         <div className='facilities'>
+         <div className='facilities' onMouseOver={props.handleHover} data-id={s.id}>
             Accessible toilet at station? { s.accessible_toilet } <br />
             { s.accessible_toilet_note ? "NOTE: " + s.accessible_toilet_note : null} <br />
             Lift access to the station platform? { s.lift_access }
          </div>
-         <div className='transport'>
+         <div className='transport' onMouseOver={props.handleHover} data-id={s.id}>
             { renderPublicTransport() }
          </div>
          { renderAdditionalAccessInfo() }

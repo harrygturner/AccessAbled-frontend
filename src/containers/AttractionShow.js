@@ -6,6 +6,8 @@ import Accessibility from '../components/disDetails/Accessibility'
 import Accomodation from '../components/disDetails/Accomodation'
 import Facilities from '../components/disDetails/Facilities'
 import TubeStations from './TubeStations'
+import ReviewContainer from './ReviewContainer'
+// import Seperator from '../components/Seperator'
 
 export default class AttractionShow extends Component {
 
@@ -13,7 +15,7 @@ export default class AttractionShow extends Component {
       stations: [],
       categorySelected: null,
       stationElSelectedId: null,
-      stationElHoverId: null
+      stationElHoverId: null,
    }
 
    componentDidMount() {
@@ -34,6 +36,7 @@ export default class AttractionShow extends Component {
    }
 
    handleStationElHover = event => {
+      event.stopPropagation()
       const stationId = event.target.dataset.id
       this.setState({
          stationElHoverId: stationId
@@ -51,6 +54,8 @@ export default class AttractionShow extends Component {
          categorySelected: category
       })
    }
+
+   handleMouseLeaveDisabledContent = () => this.setState({stationElHoverId: null})
 
    renderDisabledContent = () => {
       const attraction = this.props.attraction
@@ -99,14 +104,18 @@ export default class AttractionShow extends Component {
                   attraction={attraction} 
                   handleCategorySelected={this.handleCategorySelected} 
                   renderDisabledContent={this.renderDisabledContent} 
+                  handleMouseLeaveDisabledContent={this.handleMouseLeaveDisabledContent}
                />
                <AttractionMap 
                   stations={this.state.stations} 
-                  attraction={this.props.attraction} 
+                  attraction={attraction} 
                   handleStationMarkerClick={this.handleStationMarkerClick} 
                   stationSelecetedId={this.state.stationElSelectedId}
                   stationHoverId={this.state.stationElHoverId}
                />
+            </div>
+            <div className='attr-row3'>
+               <ReviewContainer attractionId={attraction.id} />
             </div>
          </div>
       )
