@@ -32,7 +32,7 @@ const ReviewCard = props => {
    return (
       <div className='card'>
          <div className='right top title'>
-            Title
+            {props.review.title}
          </div>
          <div className='right bottom comment'>
             {props.review.comment}

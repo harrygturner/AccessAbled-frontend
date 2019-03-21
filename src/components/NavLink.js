@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NavLink = () => {
+const NavLink = (props) => {
    return(
       <div className='nav-link'>
-         'HI'
+         {props.name}
       </div>
    )
 }

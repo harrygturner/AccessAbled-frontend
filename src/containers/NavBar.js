@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import NavLink from '../components/NavLink';
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 
 
 export default class NavBar extends Component {
@@ -11,11 +11,12 @@ export default class NavBar extends Component {
             <div className='logo'>
                AccessAble
             </div>
-            <div className='nav-links'>
-               < NavLink />
-               < NavLink />
-               < NavLink />
-               < SearchBar />
+            <div className='nav-links left'>
+               < NavLink name={'Home'} />
+               < NavLink name={'Profile'} />
+            </div>
+            <div className='nav-links right'>
+               < NavLink name={'Sign Out'} />
             </div>
             
          </div>

@@ -9,6 +9,7 @@ import {
 import NavBar from './containers/NavBar'
 import AttractionContainer from './containers/AttractionContainer'
 import AttractionShow from './containers/AttractionShow'
+import SearchBar from './containers/SearchBar'
 import Banner from './components/Banner'
 
 class App extends Component {
@@ -16,7 +17,8 @@ class App extends Component {
   state = {
     attractions: [],
     attractionSelectedId: null,
-    accessibleStations: []
+    accessibleStations: [],
+    searchQuery: ''
   }
 
   componentDidMount() {
@@ -43,12 +45,22 @@ class App extends Component {
     })
   }
 
+  searchQuery = (event) => {
+    this.setState({
+      searchQuery: event.target.value.toLowerCase()
+    })
+  }
+
   renderHomePage = () => (
     <div className="App">
       <NavBar />
       <Banner />
+      <SearchBar searchQuery={this.searchQuery} />
       <div id='attractions'>
-        <AttractionContainer attractions={this.state.attractions} handleAttractionSelection={this.handleAttractionSelection} />
+        <AttractionContainer 
+          attractions={this.state.attractions.filter(attraction => attraction.name.toLowerCase().includes(this.state.searchQuery))} 
+          handleAttractionSelection={this.handleAttractionSelection} 
+        />
       </div>
     </div>
   )

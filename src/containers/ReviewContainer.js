@@ -26,13 +26,19 @@ export default class ReviewContainer extends Component {
       })
    }
 
+   handleReviewCreate = review => {
+      this.setState({ 
+         reviews: [...this.state.reviews, review] 
+      })
+   }
+
    render() {
       return(
          <div id='review'>
             <ReviewHeader handleReviewViewClick={this.handleReviewviewClick}/>
             { this.state.reviews[0] && this.state.reviewListRendering 
                ? <ReviewList reviews={this.state.reviews} /> 
-               : <ReviewForm /> } 
+               : <ReviewForm attractionId={this.props.attractionId} handleReviewCreate={this.handleReviewCreate} /> } 
          </div>
       )
    }

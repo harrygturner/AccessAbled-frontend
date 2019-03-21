@@ -4,7 +4,15 @@ import AttractionCard from '../components/AttractionCard'
 export default class AttractionContainer extends Component {
    
    renderAttractions = () => {
-      return this.props.attractions.map(attraction => < AttractionCard attraction={attraction} key={attraction.id} handleAttractionSelection={this.props.handleAttractionSelection} /> ) 
+      return this.props.attractions.map(attraction => {
+         return (
+            <AttractionCard 
+               attraction={attraction} 
+               key={attraction.id} 
+               handleAttractionSelection={this.props.handleAttractionSelection} 
+            /> 
+         )
+      })
    }
 
    render() {

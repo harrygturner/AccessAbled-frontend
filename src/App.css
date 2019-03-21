@@ -23,7 +23,14 @@ a {
 #Navbar .nav-links {
   width: 100%;
   display: flex;
+}
+
+#Navbar .right {
   justify-content: flex-end;
+}
+
+#Navbar .left {
+  justify-content: flex-start;
 }
 
 #Navbar .nav-link {
@@ -55,6 +62,25 @@ a {
   max-width: 300px;
   max-height: 200px;
   padding: 20px 40px;
+}
+
+#search-bar {
+  margin-top: 2%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-bar .text {
+  font-size: 20px;
+  font-family: 'Archivo Black';
+  margin-right: 3%;
+}
+
+#search-bar input {
+  height: 80%;
+  width: 50%;
 }
 
 #attractions {
@@ -372,4 +398,51 @@ a {
   border-bottom: solid 3px orange;
   z-index: 2;
   cursor: pointer;
+}
+
+#review-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#review-form form {
+  margin-top: 2%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  width: 95%;
+}
+
+#review-form .top {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#review-form .title {
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#review-form .rating {
+  grid-column-start: 2;
+  grid-column-end: 3; 
+}
+
+#review-form .comment {
+  grid-column-start: 1;
+  grid-column-end: 3; 
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#review-form .comment input {
+  width: 95%;
+}
+
+#review-form .submit {
+  grid-column-start: 1;
+  grid-column-end: 3; 
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
