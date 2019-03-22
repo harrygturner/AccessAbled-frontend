@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import ReviewList from './ReviewList'
 import ReviewHeader from '../components/ReviewHeader';
-import ReviewForm from './forms/ReviewForm'
+import ReviewForm from './forms/ReviewForm';
+import ErrorMessage from '../components/ErrorMessage';
+import API from '../API';
 
 export default class ReviewContainer extends Component {
 
    state = {
       reviews: [],
       reviewListRendering: true,
+      errorMessage: ''
    }
 
    componentDidMount() {
@@ -21,9 +24,21 @@ export default class ReviewContainer extends Component {
    }
 
    handleReviewviewClick = event => {
-      this.setState({ 
-         reviewListRendering: event.target.className === 'form' ? false : true
-      })
+      event.persist();
+      API.validate()
+         .then(resp => {
+            if (resp.error) {
+               this.setState({ 
+                  reviewListRendering: event.target.className === 'form' ? false : true,
+                  errorMessage: resp.error 
+               })
+            } else {
+               this.setState({ 
+                  reviewListRendering: event.target.className === 'form' ? false : true
+               })
+            }
+         }
+      )
    }
 
    handleReviewCreate = review => {
@@ -33,13 +48,18 @@ export default class ReviewContainer extends Component {
       })
    }
 
+   handleNotSignedInUser = () => this.state.errorMessage 
+      ? <ErrorMessage /> 
+      : <ReviewForm attractionId={this.props.attractionId} handleReviewCreate={this.handleReviewCreate} />
+
    render() {
       return(
          <div id='review'>
             <ReviewHeader handleReviewViewClick={this.handleReviewviewClick}/>
             { this.state.reviews[0] && this.state.reviewListRendering 
                ? <ReviewList reviews={this.state.reviews} /> 
-               : <ReviewForm attractionId={this.props.attractionId} handleReviewCreate={this.handleReviewCreate} /> } 
+               : this.handleNotSignedInUser()
+            } 
          </div>
       )
    }

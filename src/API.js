@@ -12,7 +12,7 @@ class API {
    }
 
    static validate() {
-      return this.get('http://localhost:3001/validate')
+      return this.get('http://localhost:3000/validate')
    }
 
    // static getAttractions() {
@@ -29,7 +29,7 @@ class API {
    }
 
    static create(user) {
-      return fetch('http://localhost:3001/users', {
+      return fetch('http://localhost:3000/users', {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json'

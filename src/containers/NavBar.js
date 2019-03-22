@@ -12,7 +12,7 @@ export default class NavBar extends Component {
             </div>
             <div className='nav-links left'>
                <Link to='/'>< NavLink name={'Home'} /></Link>
-               < NavLink name={'Profile'} />
+               <Link to={`/user/${this.props.userId}`}>< NavLink name={'Profile'} /></Link>
             </div>
             <div className='nav-links right' onClick={this.props.handleSignOut}>
                < NavLink name={'Sign Out'} />

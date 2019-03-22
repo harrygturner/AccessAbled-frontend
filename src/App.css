@@ -114,8 +114,6 @@ a {
 .attraction-card .img {
   width: 100%;
   max-height: 28vh;
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -125,6 +123,8 @@ a {
   width: 100%;
   height: 100%;
   z-index: -1;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .attraction-card .img .attr-name {
@@ -141,6 +141,8 @@ a {
   font-family: 'Questrial';
   text-align: left;
   padding: 10px;
+  line-height: 20px;
+  padding-bottom: 3vh;
 }
 
 #attraction-show {

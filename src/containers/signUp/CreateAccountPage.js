@@ -16,6 +16,8 @@ export default class CreateAccount extends Component {
       errorMessage: ''
    }
 
+   fullName = (first, second) => first + ' ' + second;
+
    handleChange = (event) => {
       this.setState({
          user: {
@@ -27,9 +29,28 @@ export default class CreateAccount extends Component {
 
    handleCreateRequest = event => {
       event.preventDefault()
-      const user = this.state.user
+      const { loginUser, history } = this.props;
+      const formDetails = this.state.user
+      const user = {
+         name: this.fullName(formDetails.first_name, formDetails.second_name),
+         username: formDetails.username,
+         email: formDetails.email,
+         password: formDetails.password
+      }
       API.create(user)
-         .then()
+         .then(data => {
+            if (data.error) {
+               this.handleError(data.error);
+            } else {
+               loginUser(data);
+               history.push('/');
+            }
+         })
+   }
+
+   handleError = errorMessage => {
+      document.querySelector('#create form').reset();
+      this.setState({ errorMessage })
    }
 
    render() {
