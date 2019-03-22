@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 import NavLink from '../components/NavLink';
-// import SearchBar from './SearchBar';
-
+import { Link } from "react-router-dom";
 
 export default class NavBar extends Component {
    render() {
@@ -12,10 +11,10 @@ export default class NavBar extends Component {
                AccessAble
             </div>
             <div className='nav-links left'>
-               < NavLink name={'Home'} />
+               <Link to='/'>< NavLink name={'Home'} /></Link>
                < NavLink name={'Profile'} />
             </div>
-            <div className='nav-links right'>
+            <div className='nav-links right' onClick={this.props.handleSignOut}>
                < NavLink name={'Sign Out'} />
             </div>
             

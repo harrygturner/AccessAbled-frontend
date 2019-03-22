@@ -28,7 +28,8 @@ export default class ReviewContainer extends Component {
 
    handleReviewCreate = review => {
       this.setState({ 
-         reviews: [...this.state.reviews, review] 
+         reviews: [...this.state.reviews, review],
+         reviewListRendering: true
       })
    }
 

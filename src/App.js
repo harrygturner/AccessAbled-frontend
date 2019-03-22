@@ -7,14 +7,22 @@ import {
 } from 'react-router-dom';
 
 import NavBar from './containers/NavBar'
+import NavBarHome from './containers/NavBarHome'
 import AttractionContainer from './containers/AttractionContainer'
 import AttractionShow from './containers/AttractionShow'
 import SearchBar from './containers/SearchBar'
 import Banner from './components/Banner'
+import LoginPage from './containers/signUp/LoginPage'
+import CreateAccount from './containers/signUp/CreateAccountPage'
+
 
 class App extends Component {
 
   state = {
+    user: {
+      username: '',
+      id: null
+    },
     attractions: [],
     attractionSelectedId: null,
     accessibleStations: [],
@@ -51,9 +59,20 @@ class App extends Component {
     })
   }
 
+  handleSignOut = () => {
+    localStorage.clear()
+    this.setState({
+      user: {
+        username: '',
+        id: null,
+      }
+    })
+    this.props.history.push('/')
+  }
+
   renderHomePage = () => (
     <div className="App">
-      <NavBar />
+      {localStorage.token ? <NavBar handleSignOut={this.handleSignOut} /> : <NavBarHome /> }
       <Banner />
       <SearchBar searchQuery={this.searchQuery} />
       <div id='attractions'>
@@ -69,7 +88,7 @@ class App extends Component {
     if (this.state.attractionSelectedId) {
       return (
         <div className="App">
-          <NavBar />
+          {localStorage.token ? <NavBar handleSignOut={this.handleSignOut} /> : <NavBarHome /> }
           <AttractionShow 
             attraction={this.state.attractions.find(attraction => attraction.id === this.state.attractionSelectedId)}
             accessibleStations={this.state.accessibleStations}
@@ -81,14 +100,25 @@ class App extends Component {
       this.props.history.push('/')
       return <div></div>
     }
-  }
+  } 
 
+  loginUser = user => {
+    localStorage.setItem('token', user.token);
+    this.setState({
+      user: {
+        username: user.username,
+        id: user.id
+      }
+    });
+  }
 
   render() {
     return (
       <Switch>
         <Route exact path='/' component={this.renderHomePage} />
         <Route path='/attractions/:id' component={routerProps => this.renderAttractionSelected(routerProps)} />
+        <Route path='/login' component={routerProps => <LoginPage loginUser={this.loginUser} {...routerProps} />} />
+        <Route path='/create_account' component={() => <CreateAccount />} />
       </Switch>
     );
   }

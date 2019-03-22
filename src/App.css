@@ -2,9 +2,9 @@
   text-align: center;
 }
 
-div {
+/* div {
   border: solid 0.3px black;
-}
+} */
 
 a {
   text-decoration: none;
@@ -16,8 +16,14 @@ a {
   display: flex;
 }
 
+#Navbar .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #Navbar>div {
-  margin: 15px;
+  margin: 5px 20px;
 }
 
 #Navbar .nav-links {
@@ -34,9 +40,9 @@ a {
 }
 
 #Navbar .nav-link {
-  margin: 0 20px;
-  border-left: solid 0.2px lightgray;
-  padding: 0px 10px;
+  /* margin: 0 0px; */
+  border-left: solid 2px lightgray;
+  padding: 0px 40px;
 }
 
 #banner {
@@ -97,6 +103,12 @@ a {
   grid-template-rows: auto;
   grid-column-gap: 6%;
   grid-row-gap: 30px;
+}
+
+#attraction-cont a {
+  z-index: 2;
+  background: white;
+  border-radius: 8px;
 }
 
 .attraction-card .img {
@@ -331,7 +343,7 @@ a {
 #review .review-list .card {
   width: 100%;
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 1fr 3.3fr;
   grid-template-rows: repeat(2, auto);
 }
 
@@ -445,4 +457,344 @@ a {
   grid-column-end: 3; 
   grid-row-start: 3;
   grid-row-end: 4;
+}
+
+/* -----------------------  Login Page -------------------------- */
+
+#login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100%;
+  height: 100vh;
+}
+
+#login div {
+  height: 100%;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.error-message {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: 'Questrial';
+  color: red;
+}
+
+#login .signup-image {
+  background-image: url(./images/loginImg.jpg);
+  background-size: cover;
+  border-right: solid 4px black;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#login .signup-form {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-rows: 30% 30% 25%;
+  background: azure
+}
+
+#login .center-logo {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#login .center-logo .logo {
+  z-index: 2;
+  border: solid 4px black;
+  background: azure;
+  border-radius: 8px;
+  max-height: 10vh;
+  width: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#login .signup-form form {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  width: 50vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 5vh 5vh 6vh;
+  grid-row-gap: 15%;
+}
+
+#login .signup-form input {
+  border: none;
+  width: 100%;
+  height: 95%;
+  font-size: 20px;
+  font-family: 'Questrial';
+  padding-left: 2vh;
+}
+
+#login .signup-form input::placeholder {
+  font-size: 20px;
+  font-family: 'Questrial';
+  /* padding-left: 2vh; */
+}
+
+#login .signup-form input:focus {
+  outline: none;
+  border: 3px solid antiquewhite;
+  box-shadow: 0 0 20px antiquewhite;
+}
+
+#login .signup-form form .middle{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gainsboro;
+}
+
+#login .signup-form form .username{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#login .signup-form form .password{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  border-left: none;
+}
+
+#login .signup-form form .title{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Questrial';
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+#login .signup-form form .submit{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: antiquewhite;
+  border-radius: 5px;
+}
+
+#login .signup-form form .submit input{
+  background: inherit;
+  font-family: 'Questrial';
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#login .ca-link {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: 'Questrial';
+  font-size: 18px;
+}
+
+#login .ca-link a:hover {
+  color: grey;
+  text-decoration-line: underline;
+}
+
+/* -----------------------  Create Account Page -------------------------- */
+
+#create {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100%;
+  height: 100vh;
+}
+
+#create div {
+  height: 100%;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#create .create-image {
+  background-image: url(./images/createImg2.jpg);
+  background-size: cover;
+  border-left: solid 4px black;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+#create .create-form {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#create .center-logo {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#create .center-logo .logo {
+  z-index: 2;
+  border: solid 4px black;
+  background: azure;
+  border-radius: 8px;
+  max-height: 10vh;
+  width: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#create .create-form {
+  display: grid;
+  grid-template-rows: 18% 50% 15%;
+  background: azure;
+}
+
+#create .create-form form {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  width: 50vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 5vh 5vh 5vh 5vh 6vh;
+  grid-row-gap: 10%;
+}
+
+#create .create-form input {
+  border: none;
+  width: 100%;
+  height: 95%;
+  font-size: 20px;
+  font-family: 'Questrial';
+  padding-left: 2vh;
+}
+
+#create .create-form input::placeholder {
+  font-size: 20px;
+  font-family: 'Questrial';
+}
+
+#create .create-form form .title{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Questrial';
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+#create .create-form form .row2{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gainsboro;
+}
+
+#create .create-form form .row3{
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gainsboro;
+}
+
+#create .create-form form .left{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+#create .create-form form .right{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  border-left: none;
+}
+
+#create .create-form form .email{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid gainsboro;
+}
+
+#create .create-form form .submit{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 5;
+  grid-row-end: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: antiquewhite;
+  border-radius: 5px;
+}
+
+#create .create-form form .submit input{
+  background: inherit;
+  font-family: 'Questrial';
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+#create .create-form input:focus {
+  outline: none;
+  border: 3px solid antiquewhite;
+  box-shadow: 0 0 20px antiquewhite;
+}
+
+#create .ca-link {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-family: 'Questrial';
+  font-size: 18px;
+}
+
+#create .ca-link a:hover {
+  color: grey;
+  text-decoration-line: underline;
 }

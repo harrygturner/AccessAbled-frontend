@@ -7,7 +7,6 @@ import Accomodation from '../components/disDetails/Accomodation'
 import Facilities from '../components/disDetails/Facilities'
 import TubeStations from './TubeStations'
 import ReviewContainer from './ReviewContainer'
-// import Seperator from '../components/Seperator'
 
 export default class AttractionShow extends Component {
 
