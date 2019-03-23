@@ -1,5 +1,6 @@
 import React from 'react';
-import Rating from './Rating'
+import Rating from './Rating';
+import RatingBad from './RatingBad';
 
 const ReviewCard = props => {
    const ratingN = props.review.rating
@@ -15,7 +16,7 @@ const ReviewCard = props => {
    const renderBadRating = rating => {
       const ratings = []
       for (let i = 0; i < rating; i++) {
-         ratings.push(<Rating key={i} />);
+         ratings.push(<RatingBad key={i} />);
       }
       return ratings
    }

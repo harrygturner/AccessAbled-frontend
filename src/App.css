@@ -101,17 +101,25 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr );
   grid-template-rows: auto;
-  grid-column-gap: 6%;
-  grid-row-gap: 30px;
+  grid-column-gap: 1%;
+  grid-row-gap: 1%;
+  margin-bottom: 5%;
 }
 
 #attraction-cont a {
   z-index: 2;
   background: white;
-  border-radius: 8px;
 }
 
-.attraction-card .img {
+.attraction-card {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+}
+
+.attraction-card figure {
   width: 100%;
   max-height: 28vh;
   display: flex;
@@ -119,20 +127,85 @@ a {
   align-items: flex-end;
 }
 
-.attraction-card .img img {
+/* --------------- card affect properties ---------------- */
+
+.attraction-card figure img {
   width: 100%;
   height: 100%;
   z-index: -1;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  position: relative;
+  display: block;
+  opacity: 1;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale(1.22);
+  transform: scale(1.22);
 }
 
-.attraction-card .img .attr-name {
+.attraction-card figure.attr-content figcaption::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(top, rgba(72, 76, 97, 0) 0%, rgba(72, 76, 97, 0.8) 75%);
+  background: linear-gradient(to bottom, rgba(72, 76, 97, 0) 0%, rgba(72, 76, 97, 0.8) 75%);
+  content: '';
+  opacity: 0;
+  -webkit-transform: translate3d(0, 50%, 0);
+  transform: translate3d(0, 50%, 0);
+}
+
+
+.attraction-card figure figcaption h2 {
   font-family: 'Archivo Black';
   font-size: 20px;
   color: white;
-  margin: 0px 8px;
   position: absolute;
+  top: 80%;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  -webkit-transition: -webkit-transform 0.35s, color 0.35s;
+  transition: transform 0.35s, color 0.35s;
+  -webkit-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+}
+
+.attraction-card figure figcaption p i {
+  margin-right: 0.2em;
+}
+
+figure.attr-content figcaption::before,
+figure.attr-content p {
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+figure.attr-content p {
+  font-family: 'Archivo Black';
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transform: translate3d(0, 10px, 0);
+  transform: translate3d(0, 10px, 0);
+}
+
+figure.attr-content:hover h2 {
+  color: #fff;
+  -webkit-transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
+  transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
+}
+
+figure.attr-content:hover figcaption::before,
+figure.attr-content:hover p {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .attraction-card .content {
