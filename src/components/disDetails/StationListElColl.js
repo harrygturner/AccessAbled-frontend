@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Collapse } from 'react-collapse';
 import StationInformation from './StationInformation'
 
-class StationListElColl extends Component {
+class StationListElColl extends PureComponent {
 
    state = {
       isOpened: false,
@@ -23,11 +23,11 @@ class StationListElColl extends Component {
 
    handleClick = () => {
       const stationId = this.props.station.accessible_station_id
+      this.props.handleStationElClick(stationId)
       this.setState({ 
          isOpened: this.props.isOpen, 
          stationElSelectedId: stationId 
       })
-      this.props.handleStationElClick(stationId)
    }
 
    handleHover = (event) => this.props.handleStationElHover(event)
@@ -52,6 +52,7 @@ class StationListElColl extends Component {
                   onMouseOver={ this.handleHover }
                >
                   Distance: {station.distance} metres
+                  {this.state.isOpened ? <i className="fas fa-chevron-circle-down"></i> : <i className="fas fa-chevron-circle-right"></i>}
                </div>
             </div>
             { this.state.stationElSelectedId 

@@ -18,8 +18,6 @@ import ProfilePage from './containers/ProfilePage'
 import NavBarHomeWithoutSearch from './components/NavBarHomeWithoutSearch'
 import NavBarUserWithoutSearch from './components/NavBarUserWithoutSearch'
 
-import { ParallaxProvider } from 'react-scroll-parallax';
-
 class App extends Component {
 
   state = {
@@ -101,14 +99,12 @@ class App extends Component {
       return (
         <div className="App">
         {localStorage.token ? <NavBarUserWithoutSearch handleSignOut={this.handleSignOut} userId={this.state.user.id} /> : <NavBarHomeWithoutSearch /> }
-          <ParallaxProvider>
-            <AttractionShow 
-              attraction={this.state.attractions.find(attraction => attraction.id === this.state.attractionSelectedId)}
-              accessibleStations={this.state.accessibleStations}
-              userId={this.state.user.id}
-              {...props} 
-            />
-          </ParallaxProvider>
+          <AttractionShow 
+            attraction={this.state.attractions.find(attraction => attraction.id === this.state.attractionSelectedId)}
+            accessibleStations={this.state.accessibleStations}
+            userId={this.state.user.id}
+            {...props} 
+          />
         </div>
       )
     } else {

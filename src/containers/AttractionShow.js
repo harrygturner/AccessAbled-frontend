@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Fade from 'react-reveal/Fade';
+
 import AttractionImage from '../components/AttractionImage';
 import DisabledContent from '../components/DisabledContent';
 import AttractionMap from './AttractionMap';
@@ -7,8 +9,9 @@ import Accomodation from '../components/disDetails/Accomodation'
 import Facilities from '../components/disDetails/Facilities'
 import TubeStations from './TubeStations'
 import ReviewContainer from './ReviewContainer'
-
-import { Parallax } from 'react-scroll-parallax';
+import DisabledContentList from '../components/DisabledContentList'
+import SideNav from '../components/SideNav'
+import ReviewCatList from '../components/ReviewCatList'
 
 export default class AttractionShow extends Component {
 
@@ -17,6 +20,8 @@ export default class AttractionShow extends Component {
       categorySelected: null,
       stationElSelectedId: null,
       stationElHoverId: null,
+      allReviewsRendering: true,
+      reviews: []
    }
 
    componentDidMount() {
@@ -47,9 +52,9 @@ export default class AttractionShow extends Component {
    handleCategorySelected = e => {
       const arr = Array.prototype.slice.call(e.target.parentElement.children)
       arr.forEach(el => {
-         el.style.background = ''
+         el.style.borderBottom = ''
       })
-      e.target.style.background = 'red'
+      e.target.style.borderBottom = 'solid 2px steelblue'
       const category = e.target.innerText.toLowerCase();
       this.setState({
          categorySelected: category
@@ -85,48 +90,54 @@ export default class AttractionShow extends Component {
       return(
          <div id='show-page'>
             <div id='attraction-show'>
-               <Parallax>
-                  <div className='attr-row1'>
-                     <AttractionImage attraction={attraction} />
-                     <div className='attr-content'>
-                        <div className='heading'>
-                           {attraction.name}
-                        </div>
-                        <div className='description'>
-                           {attraction.about_attraction}
-                        </div>
-                        <div className='address'>
-                           Address: {attraction.address}
-                        </div>
+               <Fade top big opposite>
+               <div className='attr-row1'>
+                  <AttractionImage attraction={attraction} />
+                  <div className='attr-content'>
+                     <div className='heading'>
+                        {attraction.name}
+                     </div>
+                     <div className='description'>
+                        {attraction.about_attraction}
+                     </div>
+                     <div className='address'>
+                        Address: {attraction.address}
                      </div>
                   </div>
-               </Parallax>
-            </div>
-            <Parallax>
-               <div className='attr-row2'>
-                  <DisabledContent 
-                     attraction={attraction} 
-                     handleCategorySelected={this.handleCategorySelected} 
-                     renderDisabledContent={this.renderDisabledContent} 
-                     handleMouseLeaveDisabledContent={this.handleMouseLeaveDisabledContent}
-                  />
-                  <AttractionMap 
-                     stations={this.state.stations} 
-                     attraction={attraction} 
-                     handleStationMarkerClick={this.handleStationMarkerClick} 
-                     stationSelecetedId={this.state.stationElSelectedId}
-                     stationHoverId={this.state.stationElHoverId}
-                  />
+                  <SideNav />
                </div>
-            </Parallax>
-            <Parallax>
+               </ Fade>
+            </div>
+            <div id='accessibility'>
+               <Fade top big opposite>
+                  <div className='attr-row2'>
+                     <DisabledContentList handleCategorySelected={this.handleCategorySelected} />
+                     <DisabledContent 
+                        attraction={attraction} 
+                        renderDisabledContent={this.renderDisabledContent} 
+                        handleMouseLeaveDisabledContent={this.handleMouseLeaveDisabledContent}
+                     />
+                     <AttractionMap 
+                        stations={this.state.stations} 
+                        attraction={attraction} 
+                        handleStationMarkerClick={this.handleStationMarkerClick} 
+                        stationSelecetedId={this.state.stationElSelectedId}
+                        stationHoverId={this.state.stationElHoverId}
+                     />
+                     <SideNav />
+                  </div>
+               </Fade>
+            </div>
+            <div id='review-cont'>           
                <div className='attr-row3'>
+                  <ReviewCatList />
                   <ReviewContainer 
                      attractionId={attraction.id}
                      userId={this.props.userId}
                   />
+                  <SideNav />
                </div>
-            </Parallax>
+            </div>
          </div>
       )
    }

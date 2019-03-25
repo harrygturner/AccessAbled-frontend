@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background: whitesmoke;
 }
 
 /* div {
@@ -389,27 +390,26 @@ figure.attr-content:hover p {
 
 #attraction-show {
   font-family: 'Questrial';
-  margin: 10% 0% 0%;
   display: flex;
   justify-content: center;
   border-bottom: solid 1px gainsboro;
   padding-bottom: 1.5%;
-  height: 94vh;
+  height: 75vh;
 }
 
 #attraction-show .attr-row1 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 10%;
+  grid-template-columns: repeat(2, 1fr) 5%;
+  grid-column-gap: 5%;
   align-items: center;
-  margin: 0px 5%;
+  margin: 0px 2.5%;
   text-align: left;
   line-height: 2.5vh;
-
 }
 
 #attraction-show .attraction-img img {
   width: 100%;
+  border: solid 6px steelblue;
 }
 
 #attraction-show .address {
@@ -419,80 +419,80 @@ figure.attr-content:hover p {
 
 .attr-content .heading {
   font-family: 'Archivo Black';
-  font-size: 24px;
+  font-size: 24git apx;
   margin: 0px 0px 20px;
 }
 
 #show-page .attr-row2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 10% repeat(2, 1fr) 5%;
   grid-column-gap: 5%;
   align-items: center;
   margin: 0px 2.5%;
   height: 50vh;
-}
-
-#show-page .disabled-container {
-  font-family: 'Questrial';
-  justify-content: center;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: 60% auto;
+  width: 100%;
 }
 
 #show-page {
   display: grid;
   justify-content: center;
-  max-width: 180vh;
+  max-width: 240vh;
   margin: 0px auto;
 }
 
-.disabled-container .dis-cat {
-  font-family: 'Archivo Black';
-  cursor: pointer;
-  grid-column-start: 1;
-  grid-column-end: 2;
+.dis-cat.list {
   display: grid;
-  align-items: center;
+  grid-template-rows: 25% repeat(4, 1fr) 25%;
+  grid-column: 1/2;
   height: 100%;
+  font-weight: 800;
+  font-family: 'Questrial'
+} 
+
+.dis-cat div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.disabled-container .dis-cat.list {
-  display: grid;
-}
-
-.disabled-container .dis-cat.1 {
-  grid-row-start: 1;
-  grid-row-end: 2; 
-}
-
-.disabled-container .dis-cat.2 {
+.dis-cat.one {
   grid-row-start: 2;
   grid-row-end: 3; 
 }
 
-.disabled-container .dis-cat.3 {
+.dis-cat.two {
   grid-row-start: 3;
   grid-row-end: 4; 
 }
 
-.disabled-container .dis-cat.4 {
+.dis-cat.three {
   grid-row-start: 4;
   grid-row-end: 5; 
 }
 
-.disabled-container .dis-info {
+.dis-cat.four {
+  grid-row-start: 5;
+  grid-row-end: 6; 
+}
+
+.dis-info {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 6; 
   height: 50vh;
   overflow-y: scroll;
+  margin-left: 10%;
+  font-family: 'Questrial'
 }
 
 #attraction-map .gmnoprint {
   display: none;
+}
+
+#attraction-map {
+  grid-column: 3/4;
 }
 
 #attraction-map a {
@@ -505,6 +505,11 @@ figure.attr-content:hover p {
   align-content: center;  
   height: 5vh;
   cursor: pointer;
+}
+
+.station-list .station-el i {
+  margin-left: 5%;
+  color: steelblue;
 }
 
 .station-list .station-el .station-name {
@@ -544,42 +549,15 @@ figure.attr-content:hover p {
   margin-bottom: 15px;
 }
 
-.seperator {
-  display: grid;
-  grid-template-columns: 45% 10% 45%;
-  grid-template-rows: 100%;
-  margin: 40px 0px 20px 0px;
-}
-
-.seperator .line {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.seperator .line hr {
-  border:  2px solid black;
-  width: 100%;
-}
-
-.seperator .textbox {
-  width: 100%;
-}
-
-.seperator .textbox .text {
-  font-family: 'Archivo Black';
-  background-color: white;
-  margin: 0px auto;
-  padding: 0px 10px;
-  text-align: center;
-  display: inline;
-  font-size: 20px;
+#station-info {
+  border: solid 2px steelblue;
 }
 
 #review {
-  margin: 50px 0px 30px;
+  margin: 50px auto 30px;
   display: grid;
   width: 60%;
+  grid-column: 2/3;
 }
 
 #review .review-list {
@@ -796,7 +774,7 @@ figure.attr-content:hover p {
   align-items: center;
   display: grid;
   grid-template-rows: 25% 5% 30% 25%;
-  /* background: azure */
+  background: whitesmoke;
 }
 
 #login .center-logo {
@@ -963,6 +941,7 @@ figure.attr-content:hover p {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: whitesmoke;
 }
 
 #create .center-logo {
@@ -1114,4 +1093,117 @@ figure.attr-content:hover p {
 #create .ca-link a:hover {
   color: grey;
   text-decoration-line: underline;
+}
+
+
+/* ------------------------- show page css design ----------------------- */
+
+#accessibility {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid gainsboro 1px;
+}
+
+#side-nav {
+  height: 60vh;
+  font-family: 'Questrial';
+  display: grid;
+  grid-template-rows: 20% repeat(3, 1fr) 20%;
+  list-style: circle;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.attr-row1 #side-nav {
+  grid-column: 3/4;
+}
+
+.attr-row2 #side-nav {
+  grid-column: 4/5;
+}
+
+.attr-row3 #side-nav {
+  grid-column: 3/4;
+}
+
+#side-nav .about {
+  grid-row: 2/3;
+  align-items: start;
+}
+
+#side-nav .access {
+  grid-row: 3/4;
+  align-items: center;
+}
+
+#side-nav .reviews {
+  grid-row: 4/5;
+  align-items: flex-end;
+}
+
+#side-nav div {
+  display: flex;
+  justify-content: right;
+  border-left: solid 1px gainsboro;
+  padding-left: 10%;
+}
+
+#attraction-show #side-nav .about {
+  display: list-item;
+}
+
+#accessibility #side-nav .access {
+  padding-top: 50%;
+  display: list-item;
+  text-align: left;
+}
+
+#review-cont #side-nav .reviews {
+  display: list-item;
+  text-align: left;
+  padding-top: 100%;
+}
+
+#review-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4% 0%;
+}
+
+.attr-row3 {
+  display: grid;
+  grid-column-gap: 5%;
+  align-items: center;
+  margin: 0px 2.5% 0px 0px;
+  width: 100%;
+  grid-template-columns: 10% 70% 5%;
+  grid-template-rows: auto;
+  height: 80vh;
+}
+
+#review-cont .review-cat {
+  display: grid;
+  grid-template-rows: auto repeat(2, 10%) auto;
+  height: 100%;
+}
+
+#review-cont .review-cat div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Questrial';
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#review-cont .review-cat .one {
+  grid-row: 2/3;
+}
+
+#review-cont .review-cat .two {
+  grid-row: 3/4;
 }
