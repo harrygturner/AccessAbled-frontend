@@ -1,24 +1,15 @@
 import React, { Component } from 'react';
 
-import NavLink from '../components/NavLink';
+import NavLink from './NavLink';
 import { Link } from "react-router-dom";
 import Logo from '../images/logo.png'
 
-export default class NavBar extends Component {
+export default class NavBarUserWithoutSearch extends Component {
 
-   renderSearchOption = () => (
-      <div className='search' onClick={this.props.handleSearchBtnClick}>
-         <div className='search-btn'>
-            <i className="fas fa-search"></i>
-            Search
-         </div>
-      </div>
-   )
 
    render() {
       return (
          <div id='Navbar'>
-            {this.renderSearchOption()}
             <div className='logo'>
                <img src={Logo} alt='AccessAbled logo' />
             </div>

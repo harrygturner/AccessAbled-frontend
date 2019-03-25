@@ -8,6 +8,8 @@ import Facilities from '../components/disDetails/Facilities'
 import TubeStations from './TubeStations'
 import ReviewContainer from './ReviewContainer'
 
+import { Parallax } from 'react-scroll-parallax';
+
 export default class AttractionShow extends Component {
 
    state = {
@@ -83,39 +85,48 @@ export default class AttractionShow extends Component {
       return(
          <div id='show-page'>
             <div id='attraction-show'>
-               <div className='attr-row1'>
-                  <AttractionImage attraction={attraction} />
-                  <div className='attr-content'>
-                     <div className='heading'>
-                        {attraction.name}
-                     </div>
-                     <div className='description'>
-                        {attraction.about_attraction}
-                     </div>
-                     <div className='address'>
-                        Address: {attraction.address}
+               <Parallax>
+                  <div className='attr-row1'>
+                     <AttractionImage attraction={attraction} />
+                     <div className='attr-content'>
+                        <div className='heading'>
+                           {attraction.name}
+                        </div>
+                        <div className='description'>
+                           {attraction.about_attraction}
+                        </div>
+                        <div className='address'>
+                           Address: {attraction.address}
+                        </div>
                      </div>
                   </div>
+               </Parallax>
+            </div>
+            <Parallax>
+               <div className='attr-row2'>
+                  <DisabledContent 
+                     attraction={attraction} 
+                     handleCategorySelected={this.handleCategorySelected} 
+                     renderDisabledContent={this.renderDisabledContent} 
+                     handleMouseLeaveDisabledContent={this.handleMouseLeaveDisabledContent}
+                  />
+                  <AttractionMap 
+                     stations={this.state.stations} 
+                     attraction={attraction} 
+                     handleStationMarkerClick={this.handleStationMarkerClick} 
+                     stationSelecetedId={this.state.stationElSelectedId}
+                     stationHoverId={this.state.stationElHoverId}
+                  />
                </div>
-            </div>
-            <div className='attr-row2'>
-               <DisabledContent 
-                  attraction={attraction} 
-                  handleCategorySelected={this.handleCategorySelected} 
-                  renderDisabledContent={this.renderDisabledContent} 
-                  handleMouseLeaveDisabledContent={this.handleMouseLeaveDisabledContent}
-               />
-               <AttractionMap 
-                  stations={this.state.stations} 
-                  attraction={attraction} 
-                  handleStationMarkerClick={this.handleStationMarkerClick} 
-                  stationSelecetedId={this.state.stationElSelectedId}
-                  stationHoverId={this.state.stationElHoverId}
-               />
-            </div>
-            <div className='attr-row3'>
-               <ReviewContainer attractionId={attraction.id} />
-            </div>
+            </Parallax>
+            <Parallax>
+               <div className='attr-row3'>
+                  <ReviewContainer 
+                     attractionId={attraction.id}
+                     userId={this.props.userId}
+                  />
+               </div>
+            </Parallax>
          </div>
       )
    }

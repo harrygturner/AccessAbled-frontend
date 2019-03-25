@@ -5,7 +5,7 @@ const icons = {
    'Profile': <i className="fas fa-user"></i>,
    'Sign Out': <i className= "fas fa-unlock" ></i>,
    'Login': <i className="fas fa-sign-in-alt"></i>,
-   'Create Account': <i className="fas fa-user"></i>,
+   'Register': <i className="fas fa-user"></i>,
 }
 
 const NavLink = (props) => {

@@ -37,6 +37,16 @@ class API {
          body: JSON.stringify(user)
       }).then(resp => resp.json())
    }
+
+   static likeReview(like) {
+      return fetch('http://localhost:3000/likes', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify(like)
+      }).then(resp => resp.json())
+   }
 }
 
 window.API = API;

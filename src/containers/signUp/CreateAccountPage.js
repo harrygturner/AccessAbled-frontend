@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import API from '../../API';
-
+import Logo from '../../images/logo.png';
 
 export default class CreateAccount extends Component {
 
@@ -64,6 +64,9 @@ export default class CreateAccount extends Component {
             <div className='create-image'>
             </div>
             <div className='create-form'>
+               <div className='logo'>
+                  <img src={Logo} alt='AccessAbled logo' />
+               </div>
                <div className='error-message'>
                   {this.state.errorMessage ? this.state.errorMessage : null}
                </div>

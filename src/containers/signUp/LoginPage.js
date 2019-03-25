@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import API from '../../API'
+import API from '../../API';
+import Logo from '../../images/logo.png';
 
 export default class LoginPage extends Component {
 
@@ -41,12 +42,14 @@ export default class LoginPage extends Component {
          <div id='login'>
             <div className='center-logo'>
                <div className='logo'>
-               
                </div>
             </div>
             <div className='signup-image'>
             </div>
             <div className='signup-form'>
+               <div className='logo'>
+                  <img src={Logo} alt='AccessAbled logo' />
+               </div>
                <div className='error-message'>
                   { this.state.errorMessage ? this.state.errorMessage : null }
                </div>

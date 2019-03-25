@@ -12,14 +12,25 @@ a {
 }
 
 #Navbar {
-  max-height: 7vh;
-  display: flex;
+  height: 6vh;
+  display: grid;
+  grid-template-rows: 6vh;
+  grid-template-columns: 20% 60% 20%;
+  border-bottom: solid 1px gainsboro;
 }
 
 #Navbar .logo {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 90%;
+  /* grid-column-start: 2; */
+  grid-column: 2/3;
+}
+
+#Navbar .logo img {
+  height: 100%;
 }
 
 #Navbar>div {
@@ -28,7 +39,44 @@ a {
 
 #Navbar .nav-links {
   width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 40% 30% 30%;
+  margin: 0px;
+  font-family: 'Questrial';
+  font-size: 16px;
+}
+
+#Navbar .user-nav-links {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 30% 30% 30%;
+  margin: 0px;
+  font-family: 'Questrial';
+  font-size: 16px;
+}
+
+
+#Navbar .user-nav-links .home,
+#Navbar .user-nav-links .profile,
+#Navbar .user-nav-links .sign-out {
+  width: 100%;
+  height: 95%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#Navbar .user-nav-links i {
+  display: inline;
+}
+
+#Navbar .user-nav-links>div:hover {
+  border-bottom: solid steelblue;
 }
 
 #Navbar .right {
@@ -39,10 +87,116 @@ a {
   justify-content: flex-start;
 }
 
-#Navbar .nav-link {
-  /* margin: 0 0px; */
-  border-left: solid 2px lightgray;
-  padding: 0px 40px;
+#Navbar .icon {
+  display: inline;
+  margin-right: 5%;
+}
+
+#Navbar .login {
+  width: 100%;
+  height: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#Navbar .login i {
+  display: inline;
+}
+
+#Navbar .login:hover {
+  border-bottom: solid steelblue;
+}
+
+#Navbar .search {
+  height: 90%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-family: 'Questrial';
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#Navbar .search-btn {
+  margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Questrial';
+  font-size: 16px;
+  height: 95%;
+  width: 30%;
+}
+
+#Navbar .search-btn:hover {
+  border-bottom: solid steelblue;
+}
+
+#Navbar .search-btn i {
+  margin-right: 2%;
+}
+
+/* -------------------------- Navbar search element ------------------------- */
+#Navbar-search {
+  height: 6vh;
+  display: grid;
+  grid-template-rows: 6vh;
+  grid-template-columns: 90% 5% 5%;
+  font-family: 'Questrial';
+}
+
+#Navbar-search .search {
+  grid-column: 1/2;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+#Navbar-search .search input {
+  font-size: 16px;
+  margin-left: 2%;
+  width: 100%;
+  height: 90%;
+  border: none;
+  -webkit-appearance: none;
+}
+
+#Navbar-search .search input::placeholder {
+  font-family: 'Questrial';
+  font-size: 16px;
+}
+
+#Navbar-search .search input:focus {
+  outline: none;
+  border-bottom: steelblue solid;
+}
+
+#Navbar-search .filter {
+  grid-column: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: underline;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+#Navbar-search .filter:hover {
+  border-bottom: solid steelblue;
+}
+
+#Navbar-search .exit {
+  grid-column: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
 }
 
 #banner {
@@ -76,6 +230,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: steelblue;
 }
 
 #search-bar .text {
@@ -87,6 +242,19 @@ a {
 #search-bar input {
   height: 80%;
   width: 50%;
+  font-size: 20px;
+  font-family: 'Questrial';
+}
+
+#search-bar input::placeholder {
+  font-size: 20px;
+  font-family: 'Questrial';
+}
+
+#search-bar input:focus {
+  outline: none;
+  border: 2px solid steelblue;
+  box-shadow: 0 0 10px steelblue;
 }
 
 #attractions {
@@ -117,6 +285,7 @@ a {
   overflow: hidden;
   text-align: center;
   cursor: pointer;
+  /* border: solid 1vh #18128e; */
 }
 
 .attraction-card figure {
@@ -138,8 +307,8 @@ a {
   opacity: 1;
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
-  -webkit-transform: scale(1.22);
-  transform: scale(1.22);
+  -webkit-transform: scale(1.32);
+  transform: scale(1.32);
 }
 
 .attraction-card figure.attr-content figcaption::before {
@@ -220,9 +389,12 @@ figure.attr-content:hover p {
 
 #attraction-show {
   font-family: 'Questrial';
-  margin: 1.5% 0%;
+  margin: 10% 0% 0%;
   display: flex;
   justify-content: center;
+  border-bottom: solid 1px gainsboro;
+  padding-bottom: 1.5%;
+  height: 94vh;
 }
 
 #attraction-show .attr-row1 {
@@ -231,6 +403,9 @@ figure.attr-content:hover p {
   grid-column-gap: 10%;
   align-items: center;
   margin: 0px 5%;
+  text-align: left;
+  line-height: 2.5vh;
+
 }
 
 #attraction-show .attraction-img img {
@@ -244,7 +419,7 @@ figure.attr-content:hover p {
 
 .attr-content .heading {
   font-family: 'Archivo Black';
-  font-size: 20px;
+  font-size: 24px;
   margin: 0px 0px 20px;
 }
 
@@ -418,8 +593,8 @@ figure.attr-content:hover p {
 #review .review-list .card {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 3.3fr;
-  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: repeat(4, auto);
 }
 
 #review .card .left {
@@ -442,11 +617,54 @@ figure.attr-content:hover p {
   grid-row-end: 2;
 }
 
-#review .card .bottom {
+#review .card .middle {
   grid-row-start: 2;
   grid-row-end: 3;
 }
 
+
+#review .card .bottom {
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+
+#review .card .username {
+  grid-row-start: 3;
+  grid-row-end: 5;
+  font-size: 12px;
+}
+
+#review .card .like-btn i {
+  color: steelblue;
+  margin: 0px 2%;
+}
+
+#review .card .like-btn {
+  font-size: 12px;
+}
+
+#review .card .like-btn button {
+  margin: 0px 5%;
+  width: 30%;
+  cursor: pointer;
+}
+
+#review .card .comment {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  align-items: start;
+}
+
+#review .card .like-btn {
+  grid-row-start: 4;
+  grid-row-end: 5;
+}
+
+#review .card .likes i {
+  color: steelblue;
+  margin-right: 4%;
+}
 
 #review .card div {
   padding: 10px 5px;
@@ -549,9 +767,12 @@ figure.attr-content:hover p {
   grid-row-end: 2;
 }
 
-.error-message {
+#login .error-message,
+#create .error-message {
   grid-column-start: 1;
   grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -574,8 +795,8 @@ figure.attr-content:hover p {
   justify-content: center;
   align-items: center;
   display: grid;
-  grid-template-rows: 30% 30% 25%;
-  background: azure
+  grid-template-rows: 25% 5% 30% 25%;
+  /* background: azure */
 }
 
 #login .center-logo {
@@ -590,7 +811,7 @@ figure.attr-content:hover p {
 #login .center-logo .logo {
   z-index: 2;
   border: solid 4px black;
-  background: azure;
+  background: white;
   border-radius: 8px;
   max-height: 10vh;
   width: 10vh;
@@ -599,14 +820,29 @@ figure.attr-content:hover p {
   justify-content: center;
 }
 
+#login .signup-form .logo,
+#create .create-form .logo {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login .signup-form .logo img,
+#create .create-form .logo img {
+  width: 40%;
+}
+
 #login .signup-form form {
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
   width: 50vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 5vh 5vh 6vh;
   grid-row-gap: 15%;
+  margin: 0px auto;
 }
 
 #login .signup-form input {
@@ -626,8 +862,8 @@ figure.attr-content:hover p {
 
 #login .signup-form input:focus {
   outline: none;
-  border: 3px solid antiquewhite;
-  box-shadow: 0 0 20px antiquewhite;
+  border: 2px solid steelblue;
+  box-shadow: 0 0 10px steelblue;
 }
 
 #login .signup-form form .middle{
@@ -671,7 +907,7 @@ figure.attr-content:hover p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: antiquewhite;
+  background: steelblue;
   border-radius: 5px;
 }
 
@@ -684,8 +920,8 @@ figure.attr-content:hover p {
 }
 
 #login .ca-link {
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -741,7 +977,7 @@ figure.attr-content:hover p {
 #create .center-logo .logo {
   z-index: 2;
   border: solid 4px black;
-  background: azure;
+  background: white;
   border-radius: 8px;
   max-height: 10vh;
   width: 10vh;
@@ -752,18 +988,20 @@ figure.attr-content:hover p {
 
 #create .create-form {
   display: grid;
-  grid-template-rows: 18% 50% 15%;
-  background: azure;
+  grid-template-rows: 25% 5% 40% 15%;
+  /* background: azure; */
+  align-items: start;
 }
 
 #create .create-form form {
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
   width: 50vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 5vh 5vh 5vh 5vh 6vh;
   grid-row-gap: 10%;
+  margin: 0px auto;
 }
 
 #create .create-form input {
@@ -841,8 +1079,12 @@ figure.attr-content:hover p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: antiquewhite;
+  background: steelblue;
   border-radius: 5px;
+}
+
+#create .create-form .error-message {
+  align-items: start;
 }
 
 #create .create-form form .submit input{
@@ -855,13 +1097,13 @@ figure.attr-content:hover p {
 
 #create .create-form input:focus {
   outline: none;
-  border: 3px solid antiquewhite;
-  box-shadow: 0 0 20px antiquewhite;
+  border: 2px solid steelblue;
+  box-shadow: 0 0 10px steelblue;
 }
 
 #create .ca-link {
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
   display: flex;
   justify-content: center;
   align-items: flex-end;

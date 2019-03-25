@@ -57,7 +57,7 @@ export default class ReviewContainer extends Component {
          <div id='review'>
             <ReviewHeader handleReviewViewClick={this.handleReviewviewClick}/>
             { this.state.reviews[0] && this.state.reviewListRendering 
-               ? <ReviewList reviews={this.state.reviews} /> 
+               ? <ReviewList reviews={this.state.reviews} userId={this.props.userId} /> 
                : this.handleNotSignedInUser()
             } 
          </div>

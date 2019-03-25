@@ -8,14 +8,17 @@ import {
 
 import NavBar from './containers/NavBar'
 import NavBarHome from './containers/NavBarHome'
+import NavBarSearch from './containers/NavBarSearch'
 import AttractionContainer from './containers/AttractionContainer'
 import AttractionShow from './containers/AttractionShow'
-import SearchBar from './containers/SearchBar'
 import Banner from './components/Banner'
 import LoginPage from './containers/signUp/LoginPage'
 import CreateAccount from './containers/signUp/CreateAccountPage'
 import ProfilePage from './containers/ProfilePage'
+import NavBarHomeWithoutSearch from './components/NavBarHomeWithoutSearch'
+import NavBarUserWithoutSearch from './components/NavBarUserWithoutSearch'
 
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 class App extends Component {
 
@@ -27,7 +30,8 @@ class App extends Component {
     attractions: [],
     attractionSelectedId: null,
     accessibleStations: [],
-    searchQuery: ''
+    searchQuery: '',
+    searchBtnClicked: false,
   }
 
   componentDidMount() {
@@ -71,11 +75,18 @@ class App extends Component {
     this.props.history.push('/')
   }
 
+  handleSearchBtnClick = () => this.setState({ searchBtnClicked: true })
+
+  cancelSearch = () => this.setState({ searchBtnClicked: false })
+
+  renderNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} /> : <NavBarHome handleSearchBtnClick={this.handleSearchBtnClick} /> 
+
+  renderUserNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} /> : <NavBar handleSearchBtnClick={this.handleSearchBtnClick} handleSignOut={this.handleSignOut} userId={this.state.user.id} />   
+
   renderHomePage = () => (
     <div className="App">
-      {localStorage.token ? <NavBar handleSignOut={this.handleSignOut} userId={this.state.user.id} /> : <NavBarHome /> }
+      {localStorage.token ? this.renderUserNavBarWithSearch() : this.renderNavBarWithSearch() }
       <Banner />
-      <SearchBar searchQuery={this.searchQuery} />
       <div id='attractions'>
         <AttractionContainer 
           attractions={this.state.attractions.filter(attraction => attraction.name.toLowerCase().includes(this.state.searchQuery))} 
@@ -89,12 +100,15 @@ class App extends Component {
     if (this.state.attractionSelectedId) {
       return (
         <div className="App">
-          {localStorage.token ? <NavBar handleSignOut={this.handleSignOut} userId={this.state.user.id} /> : <NavBarHome /> }
-          <AttractionShow 
-            attraction={this.state.attractions.find(attraction => attraction.id === this.state.attractionSelectedId)}
-            accessibleStations={this.state.accessibleStations}
-            {...props} 
-          />
+        {localStorage.token ? <NavBarUserWithoutSearch handleSignOut={this.handleSignOut} userId={this.state.user.id} /> : <NavBarHomeWithoutSearch /> }
+          <ParallaxProvider>
+            <AttractionShow 
+              attraction={this.state.attractions.find(attraction => attraction.id === this.state.attractionSelectedId)}
+              accessibleStations={this.state.accessibleStations}
+              userId={this.state.user.id}
+              {...props} 
+            />
+          </ParallaxProvider>
         </div>
       )
     } else {
