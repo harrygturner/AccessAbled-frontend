@@ -20,7 +20,7 @@ export default class ReviewForm extends Component {
       const review = {
          ...this.state,
          attraction_id: this.props.attractionId,
-         user_id: 1
+         user_id: this.props.userId
       }
       fetch('http://localhost:3000/reviews', {
          method: 'POST',
@@ -36,19 +36,19 @@ export default class ReviewForm extends Component {
          <div id='review-form'>
             <form onSubmit={this.submitReviewForm}>
                <div className='title top'>
-                  TITLE: <br />
-                  <input type='text' name='title' placeholder='Enter review title...' onChange={this.onChange} /><br />
+                  <input type='text' name='title' placeholder='REVIEW TITLE' onChange={this.onChange} /><br />
                </div>
                <div className='comment'>
-                  DESCRIPTION: <br />
-                  <input type='textarea' name='comment' placeholder='Enter review description...' onChange={this.onChange} /><br />
+                  <input type='textarea' name='comment' placeholder='YOUR REVIEW' onChange={this.onChange} /><br />
                </div>
                <div className='rating top'>
-                  RATING: <br />
-                  <input type='number' name='rating' onChange={this.onChange} /><br />
+                  <input type='number' name='rating' onChange={this.onChange} placeholder='RATING' /><br />
+               </div>
+               <div className='subheading'>
+                  Could you say a little more about it?
                </div>
                <div className='submit'>
-                  <input type='submit' />
+                  <input type='submit' value='SUBMIT' />
                </div>
             </form>
          </div>

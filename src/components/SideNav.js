@@ -4,13 +4,19 @@ const SideNav = (props) => {
    return(
       <div id='side-nav'>
          <div className='about'>
-            ABOUT
+            <div className='hover' onClick={props.scrollToNewPosition}>
+               ABOUT
+            </div>
          </div>
          <div className='access'>
-            ACCESS
+            <div className='hover' onClick={props.scrollToNewPosition}>
+               ACCESS
+            </div>
          </div>
          <div className='reviews'>
-            REVIEWS
+            <div className='hover' onClick={props.scrollToNewPosition}>
+               REVIEWS
+            </div>
          </div>
       </div>
    )

@@ -17,6 +17,8 @@ import CreateAccount from './containers/signUp/CreateAccountPage'
 import ProfilePage from './containers/ProfilePage'
 import NavBarHomeWithoutSearch from './components/NavBarHomeWithoutSearch'
 import NavBarUserWithoutSearch from './components/NavBarUserWithoutSearch'
+import API from './API';
+import AttractionCreatePage from './containers/AttractionCreatePage'
 
 class App extends Component {
 
@@ -48,6 +50,18 @@ class App extends Component {
           })
         })
       )
+      .then(API.validate()
+        .then(resp => {
+          if(!resp.error){
+            this.setState({
+              user: {
+                username: resp.username,
+                id: resp.id
+              }
+            })
+          }
+        })
+      )
   }
   
   handleAttractionSelection = (id) => {
@@ -75,11 +89,15 @@ class App extends Component {
 
   handleSearchBtnClick = () => this.setState({ searchBtnClicked: true })
 
+  handleSortByClick = () => {
+    console.log('hi')
+  }
+
   cancelSearch = () => this.setState({ searchBtnClicked: false })
 
-  renderNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} /> : <NavBarHome handleSearchBtnClick={this.handleSearchBtnClick} /> 
+  renderNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} handleSortByClick={this.handleSortByClick} /> : <NavBarHome handleSearchBtnClick={this.handleSearchBtnClick} /> 
 
-  renderUserNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} /> : <NavBar handleSearchBtnClick={this.handleSearchBtnClick} handleSignOut={this.handleSignOut} userId={this.state.user.id} />   
+  renderUserNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} handleSortByClick={this.handleSortByClick} /> : <NavBar handleSearchBtnClick={this.handleSearchBtnClick} handleSignOut={this.handleSignOut} userId={this.state.user.id} />   
 
   renderHomePage = () => (
     <div className="App">
@@ -131,6 +149,7 @@ class App extends Component {
         <Route path='/login' component={routerProps => <LoginPage loginUser={this.loginUser} {...routerProps} />} />
         <Route path='/create_account' component={routerProps => <CreateAccount loginUser={this.loginUser} {...routerProps} />} />
         <Route path='/user/:id' component={routerProps => <ProfilePage user={this.state.user} {...routerProps} /> } />
+        <Route path='/attraction' component={() => <AttractionCreatePage />} />
       </Switch>
     );
   }

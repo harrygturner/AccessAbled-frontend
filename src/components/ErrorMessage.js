@@ -1,9 +1,11 @@
 import React from 'react';
 
-const ErrorMessage = () => {
+const ErrorMessage = props => {
    return(
       <div className='non-user'>
-         <h1>Error</h1>
+         <div className='message'>
+            ERROR
+         </div>
       </div>
    )
 }

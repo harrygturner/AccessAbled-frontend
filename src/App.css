@@ -3,9 +3,10 @@
   background: whitesmoke;
 }
 
-/* div {
-  border: solid 0.3px black;
-} */
+.hover:hover {
+  text-decoration: underline;
+  background: rgba(0, 71, 138, 0.3);;
+}
 
 a {
   text-decoration: none;
@@ -65,7 +66,7 @@ a {
 #Navbar .user-nav-links .profile,
 #Navbar .user-nav-links .sign-out {
   width: 100%;
-  height: 95%;
+  height: 98%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +79,7 @@ a {
 
 #Navbar .user-nav-links>div:hover {
   border-bottom: solid steelblue;
+  background: rgba(0, 71, 138, 0.3);
 }
 
 #Navbar .right {
@@ -95,7 +97,7 @@ a {
 
 #Navbar .login {
   width: 100%;
-  height: 95%;
+  height: 98%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,16 +110,18 @@ a {
 
 #Navbar .login:hover {
   border-bottom: solid steelblue;
+  background: rgba(0, 71, 138, 0.3);
 }
 
 #Navbar .search {
-  height: 90%;
+  height: 100%;
   display: flex;
   justify-content: left;
   align-items: center;
   font-family: 'Questrial';
   font-size: 16px;
   cursor: pointer;
+  margin: auto 0px;
 }
 
 #Navbar .search-btn {
@@ -127,12 +131,14 @@ a {
   align-items: center;
   font-family: 'Questrial';
   font-size: 16px;
-  height: 95%;
+  height: 98%;
   width: 30%;
+  margin: 0px 0px auto;
 }
 
 #Navbar .search-btn:hover {
   border-bottom: solid steelblue;
+  background: rgba(0, 71, 138, 0.3);
 }
 
 #Navbar .search-btn i {
@@ -187,6 +193,7 @@ a {
 
 #Navbar-search .filter:hover {
   border-bottom: solid steelblue;
+  background: rgba(0, 71, 138, 0.3);
 }
 
 #Navbar-search .exit {
@@ -483,8 +490,18 @@ figure.attr-content:hover p {
   grid-row-end: 6; 
   height: 50vh;
   overflow-y: scroll;
-  margin-left: 10%;
-  font-family: 'Questrial'
+  font-family: 'Questrial';
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.dis-info .access-details,
+.dis-info .fac-details,
+.dis-info .accom-details {
+  background: white;
+  padding: 5%;
+  border-radius: 10px;
 }
 
 #attraction-map .gmnoprint {
@@ -499,12 +516,17 @@ figure.attr-content:hover p {
   display: none;
 }
 
+.station-list {
+  width: 100%;
+}
+
 .station-list .station-el {
   display: flex;
   justify-content: center;
   align-content: center;  
   height: 5vh;
   cursor: pointer;
+  width: inherit;
 }
 
 .station-list .station-el i {
@@ -534,7 +556,7 @@ figure.attr-content:hover p {
 }
 
 #station-information {
-  padding: 10px;
+  padding: 10px 5%;
 }
 
 #station-information .accessibility {
@@ -550,22 +572,27 @@ figure.attr-content:hover p {
 }
 
 #station-info {
-  border: solid 2px steelblue;
+  background: white;
+  margin-bottom: 2%;
+  width: inherit;
 }
 
 #review {
-  margin: 50px auto 30px;
+  margin: 0px auto;
   display: grid;
   width: 60%;
   grid-column: 2/3;
+  height: 70vh;
+  overflow-y: scroll;
 }
 
 #review .review-list {
-  margin-top: 2%;
+  margin: auto;
   display: grid;
   justify-content: center;
   width: 100%;
   grid-row-gap: 2vh;
+  overflow-y: scroll;
 }
 
 #review .review-list .card {
@@ -573,6 +600,9 @@ figure.attr-content:hover p {
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: repeat(4, auto);
+  height: 15vh;
+  background: white;
+  border-radius: 10px;
 }
 
 #review .card .left {
@@ -661,40 +691,27 @@ figure.attr-content:hover p {
   font-size: 20px;
 }
 
-#review .review-header {
-  display: flex;
-  width: 100%;
-  border-bottom: solid 2px slategrey
-}
-
 .attr-row3 {
   display: flex;
   justify-content: center;
-}
-
-#review .review-header div {
-  font-family: 'Archivo Black';
-  padding: 0px 50px 10px 50px;
-}
-
-#review .review-header div:hover {
-  border-bottom: solid 3px orange;
-  z-index: 2;
-  cursor: pointer;
 }
 
 #review-form {
   width: 100%;
   display: flex;
   justify-content: center;
+  font-family: 'Questrial';
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  margin: auto;
 }
 
 #review-form form {
-  margin-top: 2%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 5vh 10vh 5vh;
   width: 95%;
+  grid-row-gap: 20%;
 }
 
 #review-form .top {
@@ -707,9 +724,15 @@ figure.attr-content:hover p {
   grid-column-end: 2;
 }
 
+#review-form .comment, #review-form .rating, #review-form .title {
+  border: solid 2px gainsboro;
+  background: white;
+}
+
 #review-form .rating {
   grid-column-start: 2;
   grid-column-end: 3; 
+  border-left: none;
 }
 
 #review-form .comment {
@@ -719,16 +742,50 @@ figure.attr-content:hover p {
   grid-row-end: 3;
 }
 
-#review-form .comment input {
-  width: 95%;
-}
-
 #review-form .submit {
   grid-column-start: 1;
   grid-column-end: 3; 
   grid-row-start: 3;
   grid-row-end: 4;
+  background: steelblue;
+  border-radius: 4%;
+  cursor: pointer;
 }
+
+#review-form .submit input {
+  background: inherit;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+#review-form input {
+  border: none;
+  width: 99.2%;
+  height: 95%;
+  font-family: 'Questrial';
+  font-size: 16px;
+  margin: 0px auto;
+  background: none;
+}
+
+#review-form .comment input {
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+}
+
+#review-form input::placeholder {
+  font-family: 'Questrial';
+  font-size: 16px;
+  letter-spacing: 0.2em;
+}
+
+#review-form input:focus {
+  outline: none;
+  border: 2px solid steelblue;
+  box-shadow: 0 0 10px steelblue;
+} 
 
 /* -----------------------  Login Page -------------------------- */
 
@@ -895,6 +952,7 @@ figure.attr-content:hover p {
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 #login .ca-link {
@@ -1060,6 +1118,7 @@ figure.attr-content:hover p {
   justify-content: center;
   background: steelblue;
   border-radius: 5px;
+
 }
 
 #create .create-form .error-message {
@@ -1072,6 +1131,7 @@ figure.attr-content:hover p {
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 #create .create-form input:focus {
@@ -1093,6 +1153,7 @@ figure.attr-content:hover p {
 #create .ca-link a:hover {
   color: grey;
   text-decoration-line: underline;
+  background: rgba(0, 71, 138, 0.3);
 }
 
 
@@ -1110,7 +1171,7 @@ figure.attr-content:hover p {
   height: 60vh;
   font-family: 'Questrial';
   display: grid;
-  grid-template-rows: 20% repeat(3, 1fr) 20%;
+  grid-template-rows: 20% repeat(3, 20%) 20%;
   list-style: circle;
   font-size: 14px;
   font-weight: bolder;
@@ -1150,12 +1211,19 @@ figure.attr-content:hover p {
   padding-left: 10%;
 }
 
+#side-nav .hover {
+  border-left: none;
+  cursor: pointer;
+  width: fit-content;
+  padding: 10%;
+}
+
 #attraction-show #side-nav .about {
   display: list-item;
 }
 
 #accessibility #side-nav .access {
-  padding-top: 50%;
+  padding-top: 40%;
   display: list-item;
   text-align: left;
 }
@@ -1163,7 +1231,7 @@ figure.attr-content:hover p {
 #review-cont #side-nav .reviews {
   display: list-item;
   text-align: left;
-  padding-top: 100%;
+  padding-top: 85%;
 }
 
 #review-cont {
@@ -1177,9 +1245,9 @@ figure.attr-content:hover p {
   display: grid;
   grid-column-gap: 5%;
   align-items: center;
-  margin: 0px 2.5% 0px 0px;
+  margin: 0px 2.5%;
   width: 100%;
-  grid-template-columns: 10% 70% 5%;
+  grid-template-columns: 10% 75% 5%;
   grid-template-rows: auto;
   height: 80vh;
 }
@@ -1204,6 +1272,17 @@ figure.attr-content:hover p {
   grid-row: 2/3;
 }
 
-#review-cont .review-cat .two {
+#review-cont .review-cat .form {
   grid-row: 3/4;
 }
+
+input::placeholder:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------  error message ------------------------ */
+.non-user .review-list {
+  z-index: -2;
+  position: relative;
+}
+

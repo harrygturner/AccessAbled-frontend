@@ -12,6 +12,7 @@ import ReviewContainer from './ReviewContainer'
 import DisabledContentList from '../components/DisabledContentList'
 import SideNav from '../components/SideNav'
 import ReviewCatList from '../components/ReviewCatList'
+import API from '../API'
 
 export default class AttractionShow extends Component {
 
@@ -20,8 +21,8 @@ export default class AttractionShow extends Component {
       categorySelected: null,
       stationElSelectedId: null,
       stationElHoverId: null,
-      allReviewsRendering: true,
-      reviews: []
+      reviewListRendering: true,
+      errorMessage: '',
    }
 
    componentDidMount() {
@@ -33,6 +34,8 @@ export default class AttractionShow extends Component {
                stations
             })
          })
+      const underLineEl = [document.querySelector('.dis-cat.one'), document.querySelector('.review-cat.one')];
+      underLineEl.forEach( el => el.style.borderBottom = 'solid 2px steelblue');
    }
 
    handleStationElClick = (id) => {
@@ -62,6 +65,66 @@ export default class AttractionShow extends Component {
    }
 
    handleMouseLeaveDisabledContent = () => this.setState({stationElHoverId: null})
+
+   handleReviewViewClick = event => {
+      event.persist();
+      API.validate()
+         .then(resp => {
+            if (resp.error) {
+               this.setState({
+                  reviewListRendering: event.target.className.includes('form') ? false : true,
+                  errorMessage: resp.error
+               })
+            } else {
+               this.setState({
+                  reviewListRendering: event.target.className.includes('form') ? false : true
+               })
+            }
+            const arr = Array.prototype.slice.call(event.target.parentElement.children)
+            arr.forEach(el => {
+               el.style.borderBottom = ''
+            })
+            event.target.style.borderBottom = 'solid 2px steelblue'
+         }
+         )
+   }
+
+   // ------------------- on sidenav click renders new scroll position --------------------
+
+   scrollToNewPosition = event => {
+      event.preventDefault();
+      switch(event.target.parentElement.className){
+         case 'access':
+            window.scrollTo({
+               top: 820, 
+               left: 0,
+               behaviour: 'smooth'
+            });
+            break;
+         case 'about':
+            window.scrollTo({
+               top: 0,
+               left: 0,
+               behaviour: 'smooth'
+            });
+            break;
+         case 'reviews':
+            window.scrollTo({
+               top: 2000,
+               left: 0,
+               behaviour: 'smooth'
+            });
+            break;
+         default:
+            window.scrollTo({
+               top: 0,
+               left: 0,
+               behaviour: 'smooth'
+            })
+      }
+   }
+
+   renderAllReviews = () => this.setState({ reviewListRendering: true })
 
    renderDisabledContent = () => {
       const attraction = this.props.attraction
@@ -104,7 +167,7 @@ export default class AttractionShow extends Component {
                         Address: {attraction.address}
                      </div>
                   </div>
-                  <SideNav />
+                  <SideNav scrollToNewPosition={this.scrollToNewPosition} />
                </div>
                </ Fade>
             </div>
@@ -124,19 +187,24 @@ export default class AttractionShow extends Component {
                         stationSelecetedId={this.state.stationElSelectedId}
                         stationHoverId={this.state.stationElHoverId}
                      />
-                     <SideNav />
+                     <SideNav scrollToNewPosition={this.scrollToNewPosition} />
                   </div>
                </Fade>
             </div>
-            <div id='review-cont'>           
-               <div className='attr-row3'>
-                  <ReviewCatList />
-                  <ReviewContainer 
-                     attractionId={attraction.id}
-                     userId={this.props.userId}
-                  />
-                  <SideNav />
-               </div>
+            <div id='review-cont'> 
+               <Fade top big opposite>          
+                  <div className='attr-row3'>
+                     <ReviewCatList handleReviewViewClick={this.handleReviewViewClick} />
+                     <ReviewContainer 
+                        userId={this.props.userId}
+                        reviewListRendering={this.state.reviewListRendering}
+                        errorMessage={this.state.errorMessage}
+                        renderAllReviews={this.renderAllReviews}
+                        attractionId={attraction.id}
+                     />
+                     <SideNav scrollToNewPosition={this.scrollToNewPosition} />
+                  </div>
+               </Fade>
             </div>
          </div>
       )

@@ -1,62 +1,39 @@
 import React, { Component } from 'react';
 import ReviewList from './ReviewList'
-import ReviewHeader from '../components/ReviewHeader';
 import ReviewForm from './forms/ReviewForm';
 import ErrorMessage from '../components/ErrorMessage';
-import API from '../API';
 
 export default class ReviewContainer extends Component {
-
+   
    state = {
-      reviews: [],
-      reviewListRendering: true,
-      errorMessage: ''
+      reviews: []
    }
 
-   componentDidMount() {
+   componentDidMount = () => {
       fetch(`http://localhost:3000/attraction_reviews/${this.props.attractionId}`)
          .then(resp => resp.json())
-         .then( reviews => {
+         .then(reviews => {
             this.setState({
                reviews
             })
          })
    }
 
-   handleReviewviewClick = event => {
-      event.persist();
-      API.validate()
-         .then(resp => {
-            if (resp.error) {
-               this.setState({ 
-                  reviewListRendering: event.target.className === 'form' ? false : true,
-                  errorMessage: resp.error 
-               })
-            } else {
-               this.setState({ 
-                  reviewListRendering: event.target.className === 'form' ? false : true
-               })
-            }
-         }
-      )
-   }
-
    handleReviewCreate = review => {
-      this.setState({ 
+      this.setState({
          reviews: [...this.state.reviews, review],
-         reviewListRendering: true
       })
+      this.props.renderAllReviews()
    }
 
-   handleNotSignedInUser = () => this.state.errorMessage 
+   handleNotSignedInUser = () => this.props.errorMessage 
       ? <ErrorMessage /> 
-      : <ReviewForm attractionId={this.props.attractionId} handleReviewCreate={this.handleReviewCreate} />
+      : <ReviewForm attractionId={this.props.attractionId} handleReviewCreate={this.handleReviewCreate} userId={this.props.userId} />
 
    render() {
       return(
          <div id='review'>
-            <ReviewHeader handleReviewViewClick={this.handleReviewviewClick}/>
-            { this.state.reviews[0] && this.state.reviewListRendering 
+            { this.state.reviews[0] && this.props.reviewListRendering 
                ? <ReviewList reviews={this.state.reviews} userId={this.props.userId} /> 
                : this.handleNotSignedInUser()
             } 

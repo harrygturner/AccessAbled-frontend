@@ -1,0 +1,211 @@
+#attraction {
+   display: grid;
+   height: 100%;
+   width: 100%;
+   grid-template-columns: repeat(2, 50%);
+   grid-template-rows: 100vh;
+   font-family: 'Questrial';
+}
+
+.middle {
+   display: flex;
+   align-items: center;
+}
+
+#attraction .form-container {
+   display: grid;
+   grid-template-rows: 15% 5% 65% 15%;
+   border-left: solid 4px;
+   background: whitesmoke;
+}
+
+#attraction .title {
+   grid-row: 1/2;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#attraction .error-message {
+   grid-row: 2/3;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: red;
+   font-family: 'Questrial';
+   font-size: 16px;
+}
+
+#attraction .form {
+   grid-row: 3/4;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#attraction .link {
+   grid-row: 4/5;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+#attraction .form {
+   display: grid;
+   grid-template-rows: 15% 85%;
+}
+
+#attraction .form .form-about {
+   display: flex;
+   grid-row: 1/2;
+   justify-content: center;
+   align-items: center;
+}
+
+#attraction form.general {
+   display: grid;
+   grid-row: 2/3;
+   grid-template-rows: 5vh 10vh 5vh 5vh;
+   grid-template-columns: 70vh;
+   grid-row-gap: 10%;
+   margin: 0 auto;
+}
+
+#attraction form.general input {
+   border: none;
+   font-family: 'Questrial';
+   font-size: 16px;
+   width: -webkit-fill-available;
+   height: 94%;
+   background: none;
+   z-index: -1;
+   padding-left: 2vh;
+}
+
+#attraction form input:focus {
+   outline: none;
+   border: solid 2px steelblue;
+   box-shadow: 0 0 10px steelblue;
+}
+
+#attraction form.general input::placeholder {
+   font-size: 20px;
+   font-family: 'Questrial';
+}
+
+
+#attraction form.general>div {
+   border: solid 2px gainsboro;
+   background: white;
+}
+
+#attraction form.general .submit {
+   border: none;
+   background: steelblue;
+   border-radius: 8px;
+}
+
+#attraction form.general .submit input {
+   font-weight: bold;
+   cursor: pointer;
+}
+
+/* -------------------------- access form ------------------------- */
+
+#attraction form.access {
+   height: 100%;
+   display: grid;
+   grid-template-rows: repeat(4, auto) 10%;
+   grid-row-gap: 5%;
+   grid-template-columns: 70vh;
+}
+
+#attraction form.access .parking {
+   grid-row: 1/2;
+   display: grid;
+   grid-template-columns: 50% 15% auto;
+   grid-template-rows: 1fr 3fr;
+}
+
+#attraction .parking .question {
+   grid-row: 1/2;
+   grid-column: 1/2;
+}
+
+#attraction .parking .btn-yes {
+   grid-row: 1/2;
+   grid-column: 2/3;
+   display: flex;
+   align-items: center;
+   justify-content: center
+}
+
+#attraction .parking .btn-no {
+   grid-row: 1/2;
+   grid-column: 3/4;
+   display: flex;
+   align-items: center;
+   justify-content: start;
+}
+
+#attraction .parking button {
+   background: white;
+   font-weight: bold;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+#attraction .parking button:focus {
+   outline: none;
+   border: 2px solid steelblue;
+}
+
+#attraction .parking .more-info {
+   grid-row: 2/3;
+   grid-column: 1/4;
+   display: grid;
+   grid-template-rows: 30% 70%;
+}
+
+#attraction .accessibility {
+   grid-row: 2/3;
+   display: grid;
+   grid-template-rows: 30% 70%;
+}
+
+#attraction .door-type {
+   grid-row: 3/4;
+   display: grid;
+   grid-template-rows: 30% 70%;
+}
+
+#attraction .counter {
+   grid-row: 4/5;
+   display: grid;
+   grid-template-rows: 30% 70%;
+}
+
+#attraction form.access input::placeholder, 
+#attraction form.access input {
+   font-size: 16px;
+   font-family: 'Questrial';
+}
+
+#attraction form.access .submit {
+   border: none;
+   background: steelblue;
+   border-radius: 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+
+#attraction form.access .submit input {
+   font-weight: bold;
+   cursor: pointer;
+   background: none;
+   border: none;
+   z-index: 2;
+}
+
