@@ -93,7 +93,7 @@ class App extends Component {
     console.log('hi')
   }
 
-  cancelSearch = () => this.setState({ searchBtnClicked: false })
+  cancelSearch = () => this.setState({ searchBtnClicked: false, searchQuery: '' })
 
   renderNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} handleSortByClick={this.handleSortByClick} /> : <NavBarHome handleSearchBtnClick={this.handleSearchBtnClick} /> 
 

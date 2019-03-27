@@ -7,6 +7,15 @@
    font-family: 'Questrial';
 }
 
+#attraction img {
+   width: 30%;
+}
+
+#attraction .image img {
+   height: 100%;
+   width: auto;
+}
+
 .middle {
    display: flex;
    align-items: center;
@@ -67,19 +76,20 @@
    grid-row: 2/3;
    grid-template-rows: 5vh 10vh 5vh 5vh;
    grid-template-columns: 70vh;
-   grid-row-gap: 10%;
+   grid-row-gap: 5%;
    margin: 0 auto;
+   height: 100%;
 }
+
+/* #attraction form.general {
+   
+} */
 
 #attraction form.general input {
    border: none;
    font-family: 'Questrial';
    font-size: 16px;
    width: -webkit-fill-available;
-   height: 94%;
-   background: none;
-   z-index: -1;
-   padding-left: 2vh;
 }
 
 #attraction form input:focus {
@@ -89,8 +99,9 @@
 }
 
 #attraction form.general input::placeholder {
-   font-size: 20px;
+   font-size: 16px;
    font-family: 'Questrial';
+   padding: 0.5%;
 }
 
 
@@ -116,15 +127,16 @@
    height: 100%;
    display: grid;
    grid-template-rows: repeat(4, auto) 10%;
-   grid-row-gap: 5%;
+   grid-row-gap: 3%;
    grid-template-columns: 70vh;
 }
 
 #attraction form.access .parking {
    grid-row: 1/2;
    display: grid;
+   grid-row-gap: 2%;
    grid-template-columns: 50% 15% auto;
-   grid-template-rows: 1fr 3fr;
+   grid-template-rows: 10% 80%;
 }
 
 #attraction .parking .question {
@@ -185,13 +197,14 @@
    grid-template-rows: 30% 70%;
 }
 
-#attraction form.access input::placeholder, 
-#attraction form.access input {
+#attraction input::placeholder, 
+#attraction input {
    font-size: 16px;
    font-family: 'Questrial';
+   padding: 2%;
 }
 
-#attraction form.access .submit {
+#attraction .submit {
    border: none;
    background: steelblue;
    border-radius: 8px;
@@ -201,11 +214,291 @@
    cursor: pointer;
 }
 
-#attraction form.access .submit input {
+#attraction form .submit input {
    font-weight: bold;
    cursor: pointer;
    background: none;
    border: none;
    z-index: 2;
+   width: 100%;
+   height: 100%;
+
 }
 
+/* ----------------------- facilities form -------------------- */
+
+#attraction form.facilities {
+   height: 100%;
+   display: grid;
+   grid-template-rows: 20% repeat(3, 15%) 10%;
+   grid-row-gap: 5%;
+   grid-template-columns: 70vh;
+}
+
+
+#attraction form.facilities .lifts {
+   grid-row: 1/2;
+   display: grid;
+   grid-row-gap: 5%; 
+   grid-template-columns: 40% 15% auto;
+   grid-template-rows: 1fr 3fr;
+}
+
+#attraction .lifts .question {
+   grid-row: 1/2;
+   grid-column: 1/2;
+}
+
+#attraction .lifts .btn-yes {
+   grid-row: 1/2;
+   grid-column: 2/3;
+   display: flex;
+   align-items: center;
+   justify-content: center
+}
+
+#attraction .lifts .btn-no {
+   grid-row: 1/2;
+   grid-column: 3/4;
+   display: flex;
+   align-items: center;
+   justify-content: start;
+}
+
+#attraction .lifts button {
+   background: white;
+   font-weight: bold;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+#attraction .lifts button:focus {
+   outline: none;
+   border: 2px solid steelblue;
+}
+
+#attraction .lifts .more-info {
+   grid-row: 2/3;
+   grid-column: 1/4;
+   display: grid;
+   grid-template-rows: 30% 70%;
+}
+
+#attraction .lifts .more-info label {
+   margin-bottom: 1%;
+}
+
+.half {
+   display: grid;
+   grid-template-rows: 30% 70%;
+}
+
+/* --------------------------- accom form ----------------------- */
+
+#attraction form.accom {
+   height: 100%;
+   display: grid;
+   grid-template-rows: 5% 5% repeat(4, 15%) 10%;
+   grid-row-gap: 3%;
+   grid-template-columns: 70vh;
+}
+
+#attraction form.accom .braille {
+   grid-row: 1/2;
+}
+
+#attraction form.accom .large_print {
+   grid-row: 2/3;
+}
+
+#attraction form.accom .braille,
+#attraction form.accom .large_print {
+   display: grid; 
+   grid-template-columns: 50% 15% auto;
+}
+
+#attraction .accom div .question {
+   grid-row: 1/2;
+   grid-column: 1/2;
+}
+
+#attraction .accom div .btn-yes {
+   grid-row: 1/2;
+   grid-column: 2/3;
+   display: flex;
+   align-items: center;
+   justify-content: center
+}
+
+#attraction .accom div .btn-no {
+   grid-row: 1/2;
+   grid-column: 3/4;
+   display: flex;
+   align-items: center;
+   justify-content: start;
+}
+
+#attraction .accom div button {
+   background: white;
+   font-weight: bold;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+#attraction .accom div button:focus {
+   outline: none;
+   border: 2px solid steelblue;
+}
+
+#attraction .mobs {
+   grid-row: 3/4;
+}
+
+#attraction .dogs {
+   grid-row: 4/5;
+}
+
+#attraction .fees {
+   grid-row: 5/6;
+}
+
+#attraction .staff {
+   grid-row: 6/7;
+}
+
+#attraction .accom .submit {
+   grid-row: 7/8;
+}
+
+/* ---------------------------- more information -------------------------- */
+
+#attraction form.more-info {
+   height: 100%;
+   display: grid;
+   grid-template-rows: 80% 10%;
+   grid-row-gap: 3%;
+   grid-template-columns: 70vh;
+}
+
+#attraction .more-info .info {
+   grid-row: 1/2;
+}
+
+#attraction .more-info .info.half{
+   grid-template-rows: 10% auto;
+}
+
+/* ------------------------- textarea ----------------------- */
+
+#attraction .more-info textarea {
+   padding: 2% 2%;
+   font-family: 'Questrial';
+   font-size: 16px;
+   line-height: 1.5em;
+   height: 30vh;
+   border: solid 2px gainsboro;
+}
+
+#attraction textarea:focus {
+   outline: none;
+   border: 2px solid steelblue;
+   box-shadow: 0 0 10px steelblue;
+}
+
+#attraction textarea {
+   width: -webkit-fill-available;
+   height: -webkit-fill-available;
+   border: none;
+   font-family: 'Questrial';
+   font-size: 16px;
+   border: solid 2px gainsboro
+}
+
+#attraction form.general textarea {
+   line-height: 1.5em;
+   padding: 1% 2%;
+   border: 0.5px;
+}
+
+#attraction form.access textarea {
+   padding: 1% 2%;
+   height: 5vh;
+}
+
+#attraction form.facilities textarea {
+   padding: 1% 2%;
+   height: 5vh;
+}
+
+#attraction form.accom textarea {
+   padding: 1% 2%;
+   height: 5vh;
+}
+
+/* -------------------------- form display ----------------------- */
+
+#attraction .form .form-about {  
+   display: grid;
+   grid-template-rows: 3vh 5vh;
+   width: 60vh;
+   grid-row-gap: 5%;
+   margin: 0px auto;
+}
+
+#attraction .form .form-about .title {  
+   display: flex;
+   justify-content: center;
+   font-size: 20px;
+   /* font-weight: bold; */
+   font-family: 'Archivo Black';
+   grid-row: 1/2;
+}
+
+#attraction .form .form-about .content {  
+   display: flex;
+   justify-content: center;
+   grid-row: 2/3;
+   text-align: center;
+}
+
+/* ----------------------- animation ------------------------ */
+
+#attraction .link {
+   margin-top: 3%;
+   display: grid;
+   grid-template-rows: 2vh 5vh;
+   grid-template-columns: 60vh;
+}
+
+#attraction .link .stages {
+   grid-row: 1/2;
+   display: grid;
+   grid-template-columns: repeat(5, 20%);
+   grid-template-rows: 100%;
+}
+
+#attraction .link .stages div {
+   display: flex;
+   justify-content: center;
+   cursor: pointer;
+}
+
+#attraction .link .stages div:hover {
+   text-decoration: underline;
+}
+
+#attraction .link .animation {
+   grid-row: 2/3;
+   display: grid;
+   grid-template-columns: 8% repeat(4, 4% 16%) 4% 8%;
+   grid-template-rows: 100%;
+}
+
+#attraction .link .animation .icon {
+   display: flex;
+   justify-content: center;
+}
+
+#attraction .link .animation .line hr {
+   border: solid 1px;
+}
