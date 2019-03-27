@@ -375,7 +375,7 @@
 #attraction form.more-info {
    height: 100%;
    display: grid;
-   grid-template-rows: 80% 10%;
+   grid-template-rows: 45% 35% 10%;
    grid-row-gap: 3%;
    grid-template-columns: 70vh;
 }
@@ -388,6 +388,47 @@
    grid-template-rows: 10% auto;
 }
 
+#attraction .more-info .image-upload{
+   grid-row: 2/3;
+   display: grid;
+   grid-template-rows: 20% 75%;
+}
+
+#attraction .form_controls {
+   border: dotted 2px gainsboro;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.upload_button_holder {
+   display: grid;
+   grid-template-rows: 5vh 5vh ;
+}
+
+.upload_button_holder div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#fileSelect {
+   border: none;
+   background: inherit;
+   font-family: 'Questrial';
+   font-size: 16px;
+   cursor: pointer;
+}
+
+#fileSelect:focus {
+   outline: none;
+}
+
+#fileSelect:hover {
+   text-decoration: underline;
+   font-weight: bolder;
+}
+
 /* ------------------------- textarea ----------------------- */
 
 #attraction .more-info textarea {
@@ -395,7 +436,7 @@
    font-family: 'Questrial';
    font-size: 16px;
    line-height: 1.5em;
-   height: 30vh;
+   height: 18vh;
    border: solid 2px gainsboro;
 }
 

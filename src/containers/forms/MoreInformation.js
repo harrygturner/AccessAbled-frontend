@@ -1,8 +1,50 @@
 import React, { Component } from 'react';
+// import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
+import axios from 'axios';
 
 export default class MoreInformation extends Component {
 
+   state = {
+      file: null
+   }
+
+   handleFileSelected = event => {
+      debugger
+      this.setState({ file: event.target.files[0] })
+   }
+
+   handleFileUpload = () => {
+      const { file } = this.state;
+      const cloudName = 'dyb7bucmi'
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'cf452lch');
+      formData.append("api_key", "535593127428556");
+
+      axios({
+         url: 'https://api.cloudinary.com/v1_1/dyb7bucmi/image/upload',
+         method: 'POST',
+         // headers: { 
+         //    "X-Requested-With": "XMLHttpRequest", 
+         // },
+         data: formData
+      }).then(resp => {
+         debugger;
+         const imageId = resp.data.public_id;
+         this.props.uploadImageId(imageId);
+      })
+
+      // var url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
+      // var xhr = new XMLHttpRequest();
+      // xhr.open('POST', url, true);
+      // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+      // xhr.send(formData);
+   }
+
    render() {
+      
       const { attraction } = this.props
       return(
          <div className='form'>
@@ -15,6 +57,15 @@ export default class MoreInformation extends Component {
                <div className='info half'>
                   <label className='middle'>Please supply any additional information about the attraction here:</label>
                   <textarea rows='5' cols='30' name='additional_info' value={attraction.additional_info} onChange={this.props.handleChange} />
+               </div>
+               <div className='image-upload half'>
+                  <label className='middle'>Image upload:</label>
+                  <div className="form_controls">
+                     <div className="upload_button_holder">
+                        <input type="file" id="fileElem" multiple accept="image/*" onChange={this.handleFileSelected} />
+                        <button type='button' id='fileSelect' onClick={this.handleFileUpload}>Upload</button>
+                     </div>
+                  </div>
                </div>
                <div className='submit'>
                   <input type='submit' value='SUBMIT' />

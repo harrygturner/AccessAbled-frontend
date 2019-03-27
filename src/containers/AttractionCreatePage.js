@@ -39,7 +39,7 @@ export default class AttractionCreatePage extends Component {
          assistance_dogs: 'Yes you can bring an assistance dog into this attraction.'
       },
       liftsInstalled: null,
-      formRendering: 'General',
+      formRendering: 'more-info',
       errorMessage: '',
       stage: 0,
    }
