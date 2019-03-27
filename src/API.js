@@ -15,10 +15,6 @@ class API {
       return this.get('http://localhost:3000/validate')
    }
 
-   // static getAttractions() {
-   //    return this.get('http://localhost:3001/attractions')
-   // }
-
    static get(url) {
       return fetch(url, {
          headers: {
@@ -45,6 +41,14 @@ class API {
             'Content-Type': 'application/json'
          },
          body: JSON.stringify(like)
+      }).then(resp => resp.json())
+   }
+
+   static createAttr(attraction) {
+      return fetch('http://localhost:3000/attractions', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(attraction)
       }).then(resp => resp.json())
    }
 }

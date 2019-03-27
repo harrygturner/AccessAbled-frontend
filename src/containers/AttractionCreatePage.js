@@ -8,6 +8,7 @@ import MoreInformation from './forms/MoreInformation';
 import Logo from '../images/logo.png';
 import FormPosition from '../components/FormPosition';
 import Image from '../images/attraction.jpg'
+import API from '../API'
 
 const API_KEY = 'AIzaSyA1bhl9ZMN60VzP-Gp6wQttiVTSP3-d9e0'
 
@@ -15,26 +16,27 @@ export default class AttractionCreatePage extends Component {
 
    state = {
       attraction: {
-         name: '',
-         about_attraction: '',
-         address: '',
+         name: 'Somerset House',
+         about_attraction: "Somerset House is a spectacular neo-classical building in the heart of London, sitting between the Strand and the River Thames. During summer months 55 fountains dance in the courtyard, and in winter you can skate on London's favourite ice rink. Somerset House also hosts open-air concerts and films, contemporary art, design and fashion exhibitions, family workshops and free guided tours of spaces usually hidden to visitors. The Trust's mission is to conserve and maintain Somerset House to the highest standards and to develop the site as a public space which is universally recognised as a world class visitor attraction and centre of excellence for culture and the arts.",
+         address: 'The Strand, London WC2R 1LA, England',
          long: null,
          lat: null,
          dis_parking: '',
-         car_park: '',
-         accessibility: '',
-         door_type: '',
-         hearing_assistance: '',
-         counter_height: '',
-         lifts: '',
-         chair_manouverability: '',
-         dis_toilets: '',
-         reduce_fees: '',
-         staff_training: '',
+         car_park: 'There is no parking at this attraction.',
+         accessibility: 'There is not level access into the venue. The intercom is in a suitable position to allow wheelchair users to gain access',
+         door_type: 'The main doors open automatically and are double width',
+         hearing_assistance: 'No hearing loops are installed and a member of staff trained in BSL skills is not generally on duty.',
+         counter_height: 'The reception desk is 5m (16ft 5in) from the accessible entrance and the desk is low height',
+         lifts: 'There is a lift for public use. The lift is located in the foyer past reception and is a standard lift. The floors which are accessible by this lift are -2, -1, 0, 1, 2 and 3.',
+         chair_manouverability: 'Level floor generally within the attraction. Everywhere is accessible.',
+         dis_toilets: 'There are accessible toilets within this venue designated for public use.',
+         reduce_fees: 'This attraction is free to all customers.',
+         staff_training: 'Staff do receive disability awareness / equality training and are Text Relay aware.',
          braille_doc: '',
          large_print_doc: '',
-         mob_allowed: '',
-         additional_info: ''
+         mob_allowed: 'Motorised scooters are allowed in public parts of the venue.',
+         additional_info: '',
+         assistance_dogs: 'Yes you can bring an assistance dog into this attraction.'
       },
       liftsInstalled: null,
       formRendering: 'General',
@@ -180,8 +182,8 @@ export default class AttractionCreatePage extends Component {
       }
    }
 
-   handleFormNav = event => {
-      debugger
+   handleFormNav = () => {
+      console.log('Navigate me')
    }
 
    renderMoreInfoError = message => {
@@ -193,21 +195,26 @@ export default class AttractionCreatePage extends Component {
 
    handleAllFormSubmit = event => {
       event.preventDefault();
-      console.log(this.state.attraction)
+      const { history } = this.props;
+      const { attraction } = this.state;
+      API.createAttr(attraction).then(data => {
+         debugger
+         history.push(`/attractions/${data.id}`)
+      })
    }
 
    renderCorrectForm = () => {
       switch(this.state.formRendering){
          case 'General':
-            return <AttrGeneral handleGeneralFormSubmit={this.handleGeneralFormSubmit} handleChange={this.handleChange} />
+            return <AttrGeneral attraction={this.state.attraction} handleGeneralFormSubmit={this.handleGeneralFormSubmit} handleChange={this.handleChange} />
          case 'Accessibility':
-            return <AttrAccess handleAccessFormSubmit={this.handleAccessFormSubmit} handleChange={this.handleChange} handleDisParkingClick={this.handleFormBtnClick} /> 
+            return <AttrAccess attraction={this.state.attraction} handleAccessFormSubmit={this.handleAccessFormSubmit} handleChange={this.handleChange} handleDisParkingClick={this.handleFormBtnClick} /> 
          case 'Facilities':
-            return <AttrFac handleFacFormSubmit={this.handleFacFormSubmit} handleChange={this.handleChange} handleLiftsClick={this.handleLiftsClick} />
+            return <AttrFac attraction={this.state.attraction} handleFacFormSubmit={this.handleFacFormSubmit} handleChange={this.handleChange} handleLiftsClick={this.handleLiftsClick} />
          case 'Accomodation':
-            return <AttrAccom handleAccomFormSubmit={this.handleAccomFormSubmit} handleChange={this.handleChange} handleAccomClick={this.handleFormBtnClick} />
+            return <AttrAccom attraction={this.state.attraction} handleAccomFormSubmit={this.handleAccomFormSubmit} handleChange={this.handleChange} handleAccomClick={this.handleFormBtnClick} />
          default: 
-            return <MoreInformation handleAllFormSubmit={this.handleAllFormSubmit} handleChange={this.handleChange} />
+            return <MoreInformation attraction={this.state.attraction} handleAllFormSubmit={this.handleAllFormSubmit} handleChange={this.handleChange} />
       }
    }
 

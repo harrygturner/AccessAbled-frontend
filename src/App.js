@@ -149,7 +149,7 @@ class App extends Component {
         <Route path='/login' component={routerProps => <LoginPage loginUser={this.loginUser} {...routerProps} />} />
         <Route path='/create_account' component={routerProps => <CreateAccount loginUser={this.loginUser} {...routerProps} />} />
         <Route path='/user/:id' component={routerProps => <ProfilePage user={this.state.user} {...routerProps} /> } />
-        <Route path='/attraction' component={() => <AttractionCreatePage />} />
+        <Route path='/attraction' component={routerProps => <AttractionCreatePage {...routerProps} />} />
       </Switch>
     );
   }

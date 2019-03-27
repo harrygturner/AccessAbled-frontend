@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 export default class AttrFac extends Component {
 
    render() {
+      const { attraction } = this.props
       return(
          <div className='form'>
             <div className='form-about'>
@@ -17,20 +18,20 @@ export default class AttrFac extends Component {
                   <div className='btn-no'><button type='button' className='hover' onClick={this.props.handleLiftsClick}>NO</button></div>
                   <div className='more-info'>
                      <label className='middle'>If yes, please supply additional information about them?</label>
-                     <textarea name='lifts' placeholder='e.g. how accessible are they, etc.?' onChange={this.props.handleChange} />
+                     <textarea name='lifts' value={attraction.lifts} placeholder='e.g. how accessible are they, etc.?' onChange={this.props.handleChange} />
                   </div>
                </div>
                <div className='dis_toilets half'>
                   <label className='middle'>Disabled toilets facilities?</label>
-                  <textarea name='dis_toilets' placeholder='e.g. where are they located/solely for disabled use?' onChange={this.props.handleChange} required />
+                  <textarea name='dis_toilets' value={attraction.dis_toilets} placeholder='e.g. where are they located/solely for disabled use?' onChange={this.props.handleChange} required />
                </div>
                <div className='hearing half'>
                   <label className='middle'>What facilities are inplace to accomadate customers who have experienced hearing loss?</label>
-                  <textarea name='hearing_assistance' placeholder='e.g. hearing loops fiited/sign language tours?' onChange={this.props.handleChange} required />
+                  <textarea name='hearing_assistance' value={attraction.hearing_assistance} placeholder='e.g. hearing loops fiited/sign language tours?' onChange={this.props.handleChange} required />
                </div>
                <div className='chair half'>
                   <label className='middle'>Is your attraction wheelchair friendly?</label>
-                  <textarea name='chair_manouverability' placeholder='e.g. wide corridors/level floors/wheelchairs available for hire?' onChange={this.props.handleChange} required />
+                  <textarea name='chair_manouverability' value={attraction.chair_manouverability} placeholder='e.g. wide corridors/level floors/wheelchairs available for hire?' onChange={this.props.handleChange} required />
                </div>
                <div className='submit'>
                   <input type='submit' value='SUBMIT' />

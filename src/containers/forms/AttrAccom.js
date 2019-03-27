@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 export default class AttrAccom extends Component {
 
    render() {
+      const { attraction } = this.props
       return(
          <div className='form'>
             <div className='form-about'>
@@ -23,19 +24,19 @@ export default class AttrAccom extends Component {
                </div>
                <div className='mobs half'>
                   <label className='middle'>Are mobility scooters permitted? If yes, what type?</label>
-                  <textarea required name='mob_allowed' placeholder='e.g. width/class?' onChange={this.props.handleChange} />
+                  <textarea required name='mob_allowed' value={attraction.mob_allowed} placeholder='e.g. width/class?' onChange={this.props.handleChange} />
                </div>
                <div className='dogs half'>
                   <label className='middle'>What is your policy towards assistance dogs?</label>
-                  <textarea required name='assistance_dogs' placeholder='e.g. are they permitted within attraction?' onChange={this.props.handleChange} />
+                  <textarea required name='assistance_dogs' value={attraction.assistance_dogs} placeholder='e.g. are they permitted within attraction?' onChange={this.props.handleChange} />
                </div>
                <div className='fees half'>
                   <label className='middle'>What rate do you charge disabled customers?</label>
-                  <textarea required name='reduce_fees' placeholder='e.g. are carers allowed in for free, what documentation is needed, etc.?' onChange={this.props.handleChange} />
+                  <textarea required name='reduce_fees' value={attraction.reduce_fees} placeholder='e.g. are carers allowed in for free, what documentation is needed, etc.?' onChange={this.props.handleChange} />
                </div>
                <div className='staff half'>
                   <label className='middle'>Do staff receive any specific training?</label>
-                  <textarea required name='staff_training' placeholder='e.g. equality/awareness/sign language?' onChange={this.props.handleChange} />
+                  <textarea required name='staff_training' value={attraction.staff_training} placeholder='e.g. equality/awareness/sign language?' onChange={this.props.handleChange} />
                </div>
                <div className='submit'>
                   <input type='submit' value='SUBMIT' />
