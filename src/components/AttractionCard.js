@@ -3,12 +3,8 @@ import { Link } from "react-router-dom";
 import images from '../images/CardImages';
 import AttractionRating from './AttractionRating'
 
-// const truncate = (str, no_words) => {
-//    return str.split(" ").splice(0, no_words).join(" ");
-// }
-
 const AttractionCard = (props) => {
-
+   const cloudName = 'dyb7bucmi'
    const attraction = props.attraction
 
    const averageRating = () => {
@@ -24,7 +20,10 @@ const AttractionCard = (props) => {
       <Link to={`/attractions/${attraction.id}`} style={{ textDecoration: 'none' }} > 
          <div className='attraction-card' onClick={() => props.handleAttractionSelection(attraction.id)}>
             <figure className='attr-content'>
-               <img src={images[attraction.id-1]} alt='Attraction preview' />
+               {attraction.image_id
+                  ? <img src={`https://res.cloudinary.com/${cloudName}/image/upload/c_fill,h_460,w_1000/${attraction.image_id}`} alt={attraction.name} />
+                  : <img src={images[attraction.id - 1]} alt={attraction.name} />
+               }
                <figcaption>
                   <h2>{attraction.name}</h2>
                   <p>Rating: {attraction.reviews.length === 0 ? 'no reviews' : <AttractionRating rating={averageRating()}/> } </p>
@@ -35,7 +34,4 @@ const AttractionCard = (props) => {
    )
 }
             
-            // <div className='content'>
-            //    {truncate(attraction.about_attraction, 40)}...
-            // </div>
 export default AttractionCard

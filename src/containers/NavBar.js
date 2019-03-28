@@ -27,7 +27,7 @@ export default class NavBar extends Component {
                   <Link to='/'>< NavLink name={'Home'} /></Link>
                </div>
                <div className='profile'>
-                  <Link to={`/user/${this.props.userId}`}>< NavLink name={'Profile'} /></Link>
+                  <Link to='/attraction'>< NavLink name={'Add Attraction'} /></Link>
                </div>
                <div className='sign-out' onClick={this.props.handleSignOut}>
                   < NavLink name={'Sign Out'} />

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Image, Video, Transformation, CloudinaryContext } from 'cloudinary-react';
 import axios from 'axios';
 
 export default class MoreInformation extends Component {
@@ -9,7 +8,6 @@ export default class MoreInformation extends Component {
    }
 
    handleFileSelected = event => {
-      debugger
       this.setState({ file: event.target.files[0] })
    }
 
@@ -20,27 +18,15 @@ export default class MoreInformation extends Component {
       const formData = new FormData();
       formData.append('file', file);
       formData.append('upload_preset', 'cf452lch');
-      formData.append("api_key", "535593127428556");
 
       axios({
-         url: 'https://api.cloudinary.com/v1_1/dyb7bucmi/image/upload',
+         url: `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
          method: 'POST',
-         // headers: { 
-         //    "X-Requested-With": "XMLHttpRequest", 
-         // },
          data: formData
       }).then(resp => {
-         debugger;
          const imageId = resp.data.public_id;
          this.props.uploadImageId(imageId);
       })
-
-      // var url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-      // var xhr = new XMLHttpRequest();
-      // xhr.open('POST', url, true);
-      // xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
-      // xhr.send(formData);
    }
 
    render() {

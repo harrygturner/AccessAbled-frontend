@@ -2,7 +2,7 @@ import React from 'react';
 
 const icons = {
    'Home': <i className="fas fa-home"></i>,
-   'Profile': <i className="fas fa-user"></i>,
+   'Add Attraction': <i className="fas fa-landmark"></i>,
    'Sign Out': <i className= "fas fa-unlock" ></i>,
    'Login': <i className="fas fa-sign-in-alt"></i>,
    'Register': <i className="fas fa-user"></i>,

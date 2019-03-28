@@ -61,11 +61,14 @@ a {
   font-size: 16px;
 }
 
+#Navbar .user-nav-links .nav-link {
+  width: 5vw;
+}
+
 
 #Navbar .user-nav-links .home,
 #Navbar .user-nav-links .profile,
 #Navbar .user-nav-links .sign-out {
-  width: 100%;
   height: 98%;
   display: flex;
   justify-content: center;
@@ -268,6 +271,8 @@ a {
 #attractions {
   display: flex;
   justify-content: center;
+  background: whitesmoke;
+  height: -webkit-fill-available;
 }
 
 #attraction-cont {
@@ -279,7 +284,7 @@ a {
   grid-template-rows: auto;
   grid-column-gap: 1%;
   grid-row-gap: 1%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 }
 
 #attraction-cont a {
@@ -504,6 +509,7 @@ figure.attr-content:hover p {
   background: white;
   padding: 5%;
   border-radius: 10px;
+  width: 100%;
 }
 
 #attraction-map .gmnoprint {
@@ -763,12 +769,13 @@ figure.attr-content:hover p {
 
 #review-form input {
   border: none;
-  width: 99.2%;
-  height: 95%;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
   font-family: 'Questrial';
   font-size: 16px;
   margin: 0px auto;
   background: none;
+  padding-left: 0.8vw;
 }
 
 #review-form .comment input {

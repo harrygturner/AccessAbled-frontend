@@ -36,12 +36,22 @@ export default class AttractionCreatePage extends Component {
          large_print_doc: '',
          mob_allowed: 'Motorised scooters are allowed in public parts of the venue.',
          additional_info: '',
-         assistance_dogs: 'Yes you can bring an assistance dog into this attraction.'
+         assistance_dogs: 'Yes you can bring an assistance dog into this attraction.',
+         image_id: null
       },
       liftsInstalled: null,
-      formRendering: 'more-info',
+      formRendering: 'General',
       errorMessage: '',
       stage: 0,
+   }
+
+   componentDidMount = () => {
+      const { history } = this.props
+      API.validate().then(resp => {
+         if(resp.error){
+            history.push('/')
+         }
+      })
    }
 
    handleChange = event => {
@@ -198,8 +208,16 @@ export default class AttractionCreatePage extends Component {
       const { history } = this.props;
       const { attraction } = this.state;
       API.createAttr(attraction).then(data => {
-         debugger
          history.push(`/attractions/${data.id}`)
+      })
+   }
+
+   uploadImageId = id => {
+      this.setState({
+         attraction: {
+            ...this.state.attraction,
+            image_id: id
+         }
       })
    }
 
@@ -214,7 +232,7 @@ export default class AttractionCreatePage extends Component {
          case 'Accomodation':
             return <AttrAccom attraction={this.state.attraction} handleAccomFormSubmit={this.handleAccomFormSubmit} handleChange={this.handleChange} handleAccomClick={this.handleFormBtnClick} />
          default: 
-            return <MoreInformation attraction={this.state.attraction} handleAllFormSubmit={this.handleAllFormSubmit} handleChange={this.handleChange} />
+            return <MoreInformation attraction={this.state.attraction} handleAllFormSubmit={this.handleAllFormSubmit} handleChange={this.handleChange} uploadImageId={this.uploadImageId} />
       }
    }
 

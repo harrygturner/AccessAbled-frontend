@@ -36,16 +36,13 @@ export default class ReviewForm extends Component {
          <div id='review-form'>
             <form onSubmit={this.submitReviewForm}>
                <div className='title top'>
-                  <input type='text' name='title' placeholder='REVIEW TITLE' onChange={this.onChange} /><br />
+                  <input type='text' name='title' placeholder='Review Title' onChange={this.onChange} /><br />
                </div>
                <div className='comment'>
-                  <input type='textarea' name='comment' placeholder='YOUR REVIEW' onChange={this.onChange} /><br />
+                  <input type='textarea' name='comment' placeholder='Your Review' onChange={this.onChange} /><br />
                </div>
                <div className='rating top'>
-                  <input type='number' name='rating' onChange={this.onChange} placeholder='RATING' /><br />
-               </div>
-               <div className='subheading'>
-                  Could you say a little more about it?
+                  <input type='number' name='rating' onChange={this.onChange} placeholder='Rating' /><br />
                </div>
                <div className='submit'>
                   <input type='submit' value='SUBMIT' />
