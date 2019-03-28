@@ -211,7 +211,7 @@ a {
 }
 
 #banner {
-  height: 20vh;
+  height: 25vh;
 }
 
 #banner .banner-img {
@@ -277,7 +277,7 @@ a {
 
 #attraction-cont {
   margin: 2% 10%;
-  max-width: 180vh;
+  max-width: 160vh;
   height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr );
@@ -406,7 +406,7 @@ figure.attr-content:hover p {
   justify-content: center;
   border-bottom: solid 1px gainsboro;
   padding-bottom: 1.5%;
-  height: 75vh;
+  height: 65vh;
   width: 100vw;
 }
 
@@ -443,7 +443,7 @@ figure.attr-content:hover p {
   grid-column-gap: 5%;
   align-items: center;
   margin: 0px 5%;
-  height: 50vh;
+  height: 60vh;
   width: 100%;
 }
 
@@ -508,8 +508,10 @@ figure.attr-content:hover p {
 .dis-info .accom-details {
   background: white;
   padding: 5%;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   width: 100%;
+  border: solid 2px steelblue;
+  line-height: 1.5em;
 }
 
 #attraction-map .gmnoprint {
@@ -535,6 +537,14 @@ figure.attr-content:hover p {
   height: 5vh;
   cursor: pointer;
   width: inherit;
+}
+
+.station-list .station-el .station-name:hover {
+  text-decoration: underline;
+}
+
+.station-list .station-el:hover {
+  background: rgba(0, 71, 138, 0.3);
 }
 
 .station-list .station-el i {
@@ -565,6 +575,7 @@ figure.attr-content:hover p {
 
 #station-information {
   padding: 10px 5%;
+  line-height: 1.5em;
 }
 
 #station-information .accessibility {
@@ -588,7 +599,7 @@ figure.attr-content:hover p {
 #review {
   margin: 0px auto;
   display: grid;
-  width: 60%;
+  width: 90%;
   grid-column: 2/3;
   height: 70vh;
   overflow-y: scroll;
@@ -601,6 +612,10 @@ figure.attr-content:hover p {
   width: 100%;
   grid-row-gap: 2vh;
   overflow-y: scroll;
+  grid-template-columns: repeat(2, 42%);
+  grid-template-rows: auto;
+  grid-column-gap: 8%;
+  grid-row-gap: 2%;
 }
 
 #review .review-list .card {
@@ -610,7 +625,8 @@ figure.attr-content:hover p {
   grid-template-rows: repeat(4, auto);
   height: 15vh;
   background: white;
-  border-radius: 10px;
+  /* border-radius: 10px; */
+  border: 2px solid steelblue;
 }
 
 #review .card .left {
@@ -662,7 +678,7 @@ figure.attr-content:hover p {
 
 #review .card .like-btn button {
   margin: 0px 5%;
-  width: 30%;
+  width: 8vw;
   cursor: pointer;
 }
 
@@ -670,6 +686,8 @@ figure.attr-content:hover p {
   grid-row-start: 2;
   grid-row-end: 4;
   align-items: start;
+  text-align: left;
+  line-height: 2.5vh;
 }
 
 #review .card .like-btn {
@@ -711,20 +729,41 @@ figure.attr-content:hover p {
   font-family: 'Questrial';
   font-size: 16px;
   letter-spacing: 0.2em;
-  margin: auto;
+  position: relative;
+}
+
+#review-form .review-list {
+  overflow-y: hidden;
+  position: absolute;
+  z-index: -1;
+  margin: 1% auto;
+  height: 66vh;
+  width: 60vw;
+}
+
+#review-form .cloak {
+  width: 100%;
+  height: 100%;
+  background: rgba(245, 245, 245, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #review-form form {
+  width: 40vw;
+  height: 40vh;
+  background: rgba(245, 245, 245, 0.9);
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: 5vh 10vh 5vh;
-  width: 95%;
-  grid-row-gap: 20%;
+  grid-template-columns: 60% 30%;
+  grid-template-rows: auto 5vh 10vh 5vh auto;
+  grid-row-gap: 5%;
+  justify-content: center;
 }
 
 #review-form .top {
-  grid-row-start: 1;
-  grid-row-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 #review-form .title {
@@ -746,15 +785,15 @@ figure.attr-content:hover p {
 #review-form .comment {
   grid-column-start: 1;
   grid-column-end: 3; 
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 #review-form .submit {
   grid-column-start: 1;
   grid-column-end: 3; 
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 5;
   background: steelblue;
   border-radius: 4%;
   cursor: pointer;
@@ -778,19 +817,32 @@ figure.attr-content:hover p {
   padding-left: 0.8vw;
 }
 
+#review-form textarea {
+  border: none;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  font-family: 'Questrial';
+  font-size: 16px;
+  margin: 0px auto;
+  background: none;
+  padding: 0.8vw;
+}
+
 #review-form .comment input {
   font-size: 14px;
   display: flex;
   align-items: flex-start;
 }
 
-#review-form input::placeholder {
+#review-form input::placeholder,
+#review-form textarea::placeholder {
   font-family: 'Questrial';
   font-size: 16px;
   letter-spacing: 0.2em;
 }
 
-#review-form input:focus {
+#review-form input:focus,
+#review-form textarea::focus {
   outline: none;
   border: 2px solid steelblue;
   box-shadow: 0 0 10px steelblue;
@@ -1169,7 +1221,7 @@ figure.attr-content:hover p {
 /* ------------------------- show page css design ----------------------- */
 
 #accessibility {
-  height: 100vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1289,9 +1341,4 @@ input::placeholder:hover {
   text-decoration: underline;
 }
 
-/* ---------------------  error message ------------------------ */
-.non-user .review-list {
-  z-index: -2;
-  position: relative;
-}
 

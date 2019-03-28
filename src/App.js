@@ -14,7 +14,6 @@ import AttractionShow from './containers/AttractionShow'
 import Banner from './components/Banner'
 import LoginPage from './containers/signUp/LoginPage'
 import CreateAccount from './containers/signUp/CreateAccountPage'
-import ProfilePage from './containers/ProfilePage'
 import NavBarHomeWithoutSearch from './components/NavBarHomeWithoutSearch'
 import NavBarUserWithoutSearch from './components/NavBarUserWithoutSearch'
 import API from './API';
@@ -32,6 +31,7 @@ class App extends Component {
     accessibleStations: [],
     searchQuery: '',
     searchBtnClicked: false,
+    sortByRating: false,
   }
 
   componentDidMount() {
@@ -87,17 +87,24 @@ class App extends Component {
     this.props.history.push('/')
   }
 
-  handleSearchBtnClick = () => this.setState({ searchBtnClicked: true })
+  handleSearchBtnClick = () => this.setState({ searchBtnClicked: true, sortByRating: false })
 
-  handleSortByClick = () => {
-    console.log('hi')
+  handleSortBtnClick = () => this.setState({ sortByRating: true, searchQuery: '', searchBtnClicked: false })
+
+  cancelSearch = () => this.setState({ searchBtnClicked: false, searchQuery: '', sortByRating: false })
+
+  renderNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} handleSortBtnClick={this.handleSortBtnClick} /> : <NavBarHome handleSearchBtnClick={this.handleSearchBtnClick} /> 
+
+  renderUserNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} handleSortBtnClick={this.handleSortBtnClick} /> : <NavBar handleSearchBtnClick={this.handleSearchBtnClick} handleSignOut={this.handleSignOut} userId={this.state.user.id} />
+  
+  averageRating = (attraction) => {
+    const reviews = attraction.reviews;
+    let totRating = 0;
+    reviews.forEach(review => {
+      totRating = totRating + review.rating;
+    });
+    return Math.round(totRating / reviews.length * 10) / 10;
   }
-
-  cancelSearch = () => this.setState({ searchBtnClicked: false, searchQuery: '' })
-
-  renderNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} handleSortByClick={this.handleSortByClick} /> : <NavBarHome handleSearchBtnClick={this.handleSearchBtnClick} /> 
-
-  renderUserNavBarWithSearch = () => this.state.searchBtnClicked ? <NavBarSearch searchQuery={this.searchQuery} cancelSearch={this.cancelSearch} handleSortByClick={this.handleSortByClick} /> : <NavBar handleSearchBtnClick={this.handleSearchBtnClick} handleSignOut={this.handleSignOut} userId={this.state.user.id} />   
 
   renderHomePage = () => (
     <div className="App">
@@ -105,7 +112,9 @@ class App extends Component {
       <Banner />
       <div id='attractions'>
         <AttractionContainer 
-          attractions={this.state.attractions.filter(attraction => attraction.name.toLowerCase().includes(this.state.searchQuery))} 
+          attractions={this.state.sortByRating 
+            ? this.state.attractions.sort((a, b) => this.averageRating(b) - this.averageRating(a))
+            : this.state.attractions.filter(attraction => attraction.name.toLowerCase().includes(this.state.searchQuery))} 
           handleAttractionSelection={this.handleAttractionSelection} 
         />
       </div>
@@ -141,6 +150,10 @@ class App extends Component {
     });
   }
 
+  handleAttractionCreate = attraction => {
+    this.setState({ attractions: [...this.state.attractions, attraction] })
+  }
+
   render() {
     return (
       <Switch>
@@ -148,7 +161,7 @@ class App extends Component {
         <Route path='/attractions/:id' component={routerProps => this.renderAttractionSelected(routerProps)} />
         <Route path='/login' component={routerProps => <LoginPage loginUser={this.loginUser} {...routerProps} />} />
         <Route path='/create_account' component={routerProps => <CreateAccount loginUser={this.loginUser} {...routerProps} />} />
-        <Route path='/attraction' component={routerProps => <AttractionCreatePage {...routerProps} />} />
+        <Route path='/attraction' component={routerProps => <AttractionCreatePage handleAttractionCreate={this.handleAttractionCreate} {...routerProps} />} />
       </Switch>
     );
   }

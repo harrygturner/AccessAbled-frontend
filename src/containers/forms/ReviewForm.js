@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReviewList from '../ReviewList';
 
 export default class ReviewForm extends Component {
 
@@ -29,25 +30,32 @@ export default class ReviewForm extends Component {
       })
          .then(resp => resp.json())
          .then(this.props.handleReviewCreate)
+      const reviewCatList = document.querySelector('#review-cont .review-cat');
+      const arr = Array.prototype.slice.call(reviewCatList.children);
+      arr[0].style.borderBottom = 'solid 2px steelblue';
+      arr[1].style.borderBottom = '';
    }
 
    render() {
       return(
          <div id='review-form'>
-            <form onSubmit={this.submitReviewForm}>
-               <div className='title top'>
-                  <input type='text' name='title' placeholder='Review Title' onChange={this.onChange} /><br />
-               </div>
-               <div className='comment'>
-                  <input type='textarea' name='comment' placeholder='Your Review' onChange={this.onChange} /><br />
-               </div>
-               <div className='rating top'>
-                  <input type='number' name='rating' onChange={this.onChange} placeholder='Rating' /><br />
-               </div>
-               <div className='submit'>
-                  <input type='submit' value='SUBMIT' />
-               </div>
-            </form>
+            <ReviewList reviews={this.props.reviews} userId={this.props.userId} />
+            <div className='cloak'>
+               <form onSubmit={this.submitReviewForm}>
+                  <div className='title top'>
+                     <input type='text' name='title' placeholder='Review Title' onChange={this.onChange} required /><br />
+                  </div>
+                  <div className='comment'>
+                     <textarea rows='5' cols='10' name='comment' placeholder='Your Review' onChange={this.onChange} required /><br />
+                  </div>
+                  <div className='rating top'>
+                     <input type='number' name='rating' onChange={this.onChange} placeholder='Rating' required min='1' max='5' /><br />
+                  </div>
+                  <div className='submit'>
+                     <input type='submit' value='SUBMIT' />
+                  </div>
+               </form>
+            </div>
          </div>
       )
    }

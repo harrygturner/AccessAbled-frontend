@@ -10,7 +10,8 @@ import FormPosition from '../components/FormPosition';
 import Image from '../images/attraction.jpg'
 import API from '../API'
 
-const API_KEY = 'AIzaSyA1bhl9ZMN60VzP-Gp6wQttiVTSP3-d9e0'
+const API_KEY = process.env.REACT_APP_GEOCODER_KEY
+
 
 export default class AttractionCreatePage extends Component {
 
@@ -69,17 +70,21 @@ export default class AttractionCreatePage extends Component {
       fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`)
          .then(resp => resp.json())
          .then(data => {
-            if(!data.error_message){
-               this.setState({
-                  attraction: {
-                     ...this.state.attraction,
-                     long: data.results[0].geometry.location.lng,
-                     lat: data.results[0].geometry.location.lat
-                  },
-                  formRendering: 'Accessibility',
-                  errorMessage: '',
-                  stage: 1,
-               })
+            if(data.results.length !== 0){
+               if(data.results[0].address_components.map(address => address.long_name).includes('London')){
+                  this.setState({
+                     attraction: {
+                        ...this.state.attraction,
+                        long: data.results[0].geometry.location.lng,
+                        lat: data.results[0].geometry.location.lat
+                     },
+                     formRendering: 'Accessibility',
+                     errorMessage: '',
+                     stage: 1,
+                  })
+               } else {
+                  this.setState({ errorMessage: 'Please select an attraction in London' })
+               }
             } else {
                this.setState({ errorMessage: 'The address you inputted does not exist' })
             }
@@ -207,9 +212,14 @@ export default class AttractionCreatePage extends Component {
       event.preventDefault();
       const { history } = this.props;
       const { attraction } = this.state;
-      API.createAttr(attraction).then(data => {
-         history.push(`/attractions/${data.id}`)
-      })
+      if(!attraction.image_id){
+         this.setState({ errorMessage: 'Please upload an image of the attraction'})
+      } else {
+         API.createAttr(attraction).then(data => {
+            this.props.handleAttractionCreate(data)
+            history.push(`/`)
+         })
+      }
    }
 
    uploadImageId = id => {

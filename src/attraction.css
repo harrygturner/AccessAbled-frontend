@@ -403,7 +403,7 @@
 
 .upload_button_holder {
    display: grid;
-   grid-template-rows: 5vh 5vh ;
+   grid-template-rows: 5vh 5vh 2vh ;
 }
 
 .upload_button_holder div {
@@ -411,6 +411,11 @@
    justify-content: center;
    align-items: center;
 }
+
+.upload_button_holder div.file-input{
+   padding-left: 25%;
+}
+
 
 #fileSelect {
    border: none;

@@ -6,7 +6,7 @@ const Accessibility = (props) => {
       <div className='access-details'>
          <div className='parking'>
             <p>Is there disable parking? {attr.dis_parking ? 'Yes' : 'No'}</p>
-            <p>{attr.car_park}</p>
+            <p>{attr.car_park ? attr.car_park : 'This attraction has no onsite parking.'}</p>
          </div>
          <div className='entrance'>
             <p>{attr.accessability}</p>

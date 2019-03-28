@@ -16,7 +16,7 @@ const TrainMarker = (props) => {
       return (
          <div className='marker'>
             <i className="fas fa-map-pin" style={{
-               color: 'green',
+               color: 'steelblue',
                fontSize: '28px',
                margin: '-40px -20px'
             }}>

@@ -4,7 +4,8 @@ import axios from 'axios';
 export default class MoreInformation extends Component {
 
    state = {
-      file: null
+      file: null,
+      fileReady: false
    }
 
    handleFileSelected = event => {
@@ -13,11 +14,11 @@ export default class MoreInformation extends Component {
 
    handleFileUpload = () => {
       const { file } = this.state;
-      const cloudName = 'dyb7bucmi'
+      const cloudName = process.env.REACT_APP_cloudName
 
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('upload_preset', 'cf452lch');
+      formData.append('upload_preset', process.env.REACT_APP_uploadPreset);
 
       axios({
          url: `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
@@ -25,6 +26,7 @@ export default class MoreInformation extends Component {
          data: formData
       }).then(resp => {
          const imageId = resp.data.public_id;
+         this.setState({ fileReady: true })
          this.props.uploadImageId(imageId);
       })
    }
@@ -48,8 +50,13 @@ export default class MoreInformation extends Component {
                   <label className='middle'>Image upload:</label>
                   <div className="form_controls">
                      <div className="upload_button_holder">
-                        <input type="file" id="fileElem" multiple accept="image/*" onChange={this.handleFileSelected} />
+                        <div className='file-input'>
+                           <input type="file" id="fileElem" multiple accept="image/*" onChange={this.handleFileSelected} />
+                        </div>
                         <button type='button' id='fileSelect' onClick={this.handleFileUpload}>Upload</button>
+                        <div className='progress'>
+                           {this.state.fileReady ? <i className="fas fa-check-circle" style={{ color: 'steelblue' }}></i> : null}
+                        </div>
                      </div>
                   </div>
                </div>

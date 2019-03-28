@@ -7,7 +7,7 @@ const Accomodation = (props) => {
          <div className='documents'>
             <p>Do they provide documnets in large print? {attr.large_print_doc ? 'Yes' : 'No'}</p>
             <p>Do they provide documnets in braille? {attr.braille_doc ? 'Yes' : 'No'}</p>
-            <p>{attr.hearing_assistance}</p>
+            <p>{attr.hearing_assistance ? attr.hearing_assistance : 'This attraction does not have any hearing loops installed and a member of staff trained in BSL (British Sign Language) is not gnerally on duty' }</p>
          </div>
          <div className='personal-items'>
             <p>Are mobility scooters allowed? {attr.mob_allowed}</p>

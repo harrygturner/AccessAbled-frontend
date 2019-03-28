@@ -27,8 +27,8 @@ export default class ReviewContainer extends Component {
    }
 
    handleNotSignedInUser = () => this.props.errorMessage 
-      ? <ErrorMessage /> 
-      : <ReviewForm attractionId={this.props.attractionId} handleReviewCreate={this.handleReviewCreate} userId={this.props.userId} />
+      ? <ErrorMessage reviews={this.state.reviews} userId={this.props.userId} /> 
+      : <ReviewForm attractionId={this.props.attractionId} reviews={this.state.reviews} handleReviewCreate={this.handleReviewCreate} userId={this.props.userId} />
 
    render() {
       return(

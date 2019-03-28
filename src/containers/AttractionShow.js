@@ -36,6 +36,11 @@ export default class AttractionShow extends Component {
          })
       const underLineEl = [document.querySelector('.dis-cat.one'), document.querySelector('.review-cat.one')];
       underLineEl.forEach( el => el.style.borderBottom = 'solid 2px steelblue');
+      window.scrollTo({
+         top: 0,
+         left: 0,
+         behaviour: 'smooth'
+      });
    }
 
    handleStationElClick = (id) => {
@@ -96,7 +101,7 @@ export default class AttractionShow extends Component {
       switch(event.target.parentElement.className){
          case 'access':
             window.scrollTo({
-               top: 820, 
+               top: 680, 
                left: 0,
                behaviour: 'smooth'
             });
@@ -110,7 +115,7 @@ export default class AttractionShow extends Component {
             break;
          case 'reviews':
             window.scrollTo({
-               top: 2000,
+               top: 1800,
                left: 0,
                behaviour: 'smooth'
             });
