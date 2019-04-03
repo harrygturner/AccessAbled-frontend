@@ -1,28 +1,23 @@
-## AccessAbled :blue_heart:
+## :blue_heart:   AccessAbled   :blue_heart:
 AccessAbled makes London accessible to all members of society. It is like Tripadvisor but focuses on what people with disabilities look for when deciding to visit a London attraction. Frontend written in React.js with vanilla CSS, no styling packages were imported, and backend written in Ruby on Rails. Cloudinary was used to upload images and store them. Google Maps API was used to display attraction locations and tube stations. Data Scraping along with an XML file provided by TFL (Transport For London) was used to extract information about the accessibility of every tube stop in London and London attractions. This data was then used to create AccessAbled’s unique database.
 
 ## Motivation
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+During one of my projects at University I was lucky enough to work with the Australian Paralympic committee and a couple of their rugby wheelchair athletes. One afternoon during testing we got talking and they mentioned their trip to London. They loved the city, however, they all agreed that the transport and general awareness for people with disabilities was low compared to other cities. I at the time hadn't thought much about how London attractions accomodate people in wheelchairs and those without sight or have trouble hearing. So I looked into it and found that generally speaking each attraction has a page on their website detailing its accessability, however, there wasn't a website or application out there that got all this information for each attraction and put it in one place. This is were AccessAbled comes in!
 
-## Build status
-Build status of continus integration i.e. travis, appveyor etc. Ex. - 
-
-[![Build Status](https://travis-ci.org/akashnimare/foco.svg?branch=master)](https://travis-ci.org/akashnimare/foco)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/akashnimare/foco?branch=master&svg=true)](https://ci.appveyor.com/project/akashnimare/foco/branch/master)
-
-## Code style
-If you're using any code style like xo, standard etc. That will help others while contributing to your project. Ex. -
-
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+Accessabled provides information to people about an attractions accessibility from the type of door at the main entrance to nearest accessible tube stops and what line is it accessible via. It is also possible to leave reviews and even add attractions that aren't on the website already.
  
 ## Screenshots
 Include logo/demo screenshot etc.
 
 ## Tech/framework used
-Ex. -
 
 <b>Built with</b>
-- [Electron](https://electron.atom.io)
+- [React.js](https://reactjs.org/)
+- [Cloudinary](https://cloudinary.com/)
+- [CSS]
+- [Google Maps API](https://developers.google.com/maps/documentation/)
+- [Geocoder](https://developers.google.com/maps/documentation/geocoding/intro)
+- [ENV](https://github.com/motdotla/dotenv) 
 
 ## Features
 What makes your project stand out?
