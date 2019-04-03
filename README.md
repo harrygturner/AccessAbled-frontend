@@ -7,7 +7,7 @@ During one of my projects at University I was lucky enough to work with the Aust
 Accessabled provides information to people about an attractions accessibility from the type of door at the main entrance to nearest accessible tube stops and what line is it accessible via. It is also possible to leave reviews and even add attractions that aren't on the website already.
  
 ## Screenshots
-Include logo/demo screenshot etc.
+[![Demo AccessAbled website](https://youtu.be/wwby6tJBN7s)]
 
 ## Tech/framework used
 
@@ -22,18 +22,59 @@ Include logo/demo screenshot etc.
 ## Features
 What makes your project stand out?
 
-## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+## Getting Started
 
-## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-## API Reference
+### Prerequisites
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+What things you need to install the software and how to install them
 
-## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+```
+Give examples
+```
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Say what the step will be
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
 
 ## Contribute
 
