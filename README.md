@@ -1,4 +1,4 @@
-## AccessAbled 
+## AccessAbled :blue_heart:
 AccessAbled makes London accessible to all members of society. It is like Tripadvisor but focuses on what people with disabilities look for when deciding to visit a London attraction. Frontend written in React.js with vanilla CSS, no styling packages were imported, and backend written in Ruby on Rails. Cloudinary was used to upload images and store them. Google Maps API was used to display attraction locations and tube stations. Data Scraping along with an XML file provided by TFL (Transport For London) was used to extract information about the accessibility of every tube stop in London and London attractions. This data was then used to create AccessAbled’s unique database.
 
 ## Motivation
