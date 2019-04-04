@@ -1,4 +1,4 @@
-## :blue_heart:   AccessAbled   :blue_heart:
+## :blue_heart:   AccessAbled   :wheelchair:
 AccessAbled makes London accessible to all members of society. It is like Tripadvisor but focuses on what people with disabilities look for when deciding to visit a London attraction. Frontend written in React.js with vanilla CSS, no styling packages were imported, and backend written in Ruby on Rails. Cloudinary was used to upload images and store them. Google Maps API was used to display attraction locations and tube stations. Data Scraping along with an XML file provided by TFL (Transport For London) was used to extract information about the accessibility of every tube stop in London and London attractions. This data was then used to create AccessAbled’s unique database.
 
 ## Motivation
@@ -19,12 +19,18 @@ Accessabled provides information to people about an attractions accessibility fr
 - [Geocoder](https://developers.google.com/maps/documentation/geocoding/intro)
 - [ENV](https://github.com/motdotla/dotenv) 
 
-## Features
-What makes your project stand out?
+## Project Requirements
+
+- :ballot_box_with_check: Auth
+- :ballot_box_with_check: Tests
+- :ballot_box_with_check: Interacting with a complex API
+- :ballot_box_with_check: Redux
+- :ballot_box_with_check: Custom CSS
+- :ballot_box_with_check: One significant refactor
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -51,37 +57,6 @@ until finished
 ```
 
 End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Contribute
-
-Let people know how they can contribute into your project. A [contributing guideline](https://github.com/zulip/zulip-electron/blob/master/CONTRIBUTING.md) will be a big plus.
-
-## Credits
-Give proper credits. This could be a link to any repo which inspired you to build this project, any blogposts or links to people who contrbuted in this project. 
 
 ## License
 [MIT license](https://opensource.org/licenses/mit-license.php)
